@@ -1,0 +1,19 @@
+@charset "utf-8";
+/*==============================================================================
+  chansoo
+  Copyright 2020 widline
+  written for - 스포츠 다이어리 앱
+    http://sdmain.sportsdiary.co.kr/app/index.asp
+  sytle guide 참고 :
+    http://adm.sportsdiary.co.kr/?path=/story/sportsdiary-app-introduction--page
+  index:
+  (_1) laout style (nav, header, aside, modal, main)
+  (_2) main style
+  (_3) 모듈 style (table, button, tab, input, select, calender, chart)
+  (_4) index, login style
+  (_5) local style()
+  (_6) media query
+==============================================================================*/
+.l_wrap{overflow:hidden;width:100%;height:100%;}
+.l_main>h1{z-index:99;position:fixed;top:0;left:0;}
+.l_main__slide{display:flex;justify-content:center;align-items:center;width:100%;height:100%;backface-visibility:hidden;background-color:rgb(231, 231, 231);}
