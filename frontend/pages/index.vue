@@ -1,11 +1,14 @@
 <template>
   <main class="l_main">
-    <h1>Chansoo's Web</h1>
+    <h1><button @click="setPage(0)">Chansoo's Web</button></h1>
     <div class="wrap">
       <ol ref="slider" class="slider">
         <transition name="fade">
           <li v-show="nav.active_idx === 0">
-            <h2>Home</h2>
+            <h2 class="ir">Home</h2>
+            <div class="slide">
+              <MySkills />
+            </div>
           </li>
         </transition>
         <transition name="fade">
@@ -50,9 +53,13 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import MySkills from '~/components/visual/MySkills.vue'
+
 export default Vue.extend({
   name: 'Index',
-  components: {},
+  components: {
+    MySkills,
+  },
   data() {
     return {
       nav: {
@@ -132,15 +139,23 @@ export default Vue.extend({
   position: relative;
   width: 100%;
   height: 100%;
+  box-sizing: border-box;
 }
 .slider {
+  position: relative;
   & > li {
+    position: absolute;
+    padding: 60px;
     width: 100%;
     height: 100vh;
     & > h2 {
       font-size: 20px;
     }
   }
+}
+.slide {
+  width: 100%;
+  height: 100%;
 }
 
 .paging {
@@ -190,13 +205,11 @@ export default Vue.extend({
     }
   }
 }
-
 .fade-enter-active,
 .fade-leave-active {
-  transition: all 0.5s ease;
+  transition: opacity 0.5s;
 }
-.fade-enter, .fade-leave
-/* .slide-fade-leave-active below version 2.1.8 */ {
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
   opacity: 0;
 }
 </style>
