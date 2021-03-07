@@ -17,6 +17,7 @@
 #__nuxt,
 #__layout,
 .l_wrap{overflow:hidden;width:100%;height:100%;}
-.l_main{height:100%;}
-.l_main>h1{z-index:99;position:fixed;top:20px;left:20px;}
-.l_main__slide{display:flex;justify-content:center;align-items:center;width:100%;height:100%;backface-visibility:hidden;background-color:rgb(231, 231, 231);}
+.l_main{padding:40px;height:100%;}
+
+.home-enter-active, .home-leave-active { transition: opacity .4s; }
+  .home-enter, .home-leave-active { opacity: 0; }

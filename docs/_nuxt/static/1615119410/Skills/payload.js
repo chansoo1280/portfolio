@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/Skills", {data:[{}],fetch:{},mutations:[["nav\u002FsetIdx",1]]});

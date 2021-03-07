@@ -16,12 +16,13 @@ export default Vue.extend({
   },
   mounted() {
     const raycaster = new THREE.Raycaster()
+    const WrapWidth = window.innerWidth * 0.4
+    const WrapHeight = window.innerWidth * 0.4
     let group, camera, scene, renderer, controls
     const mouse = {
       x: 0,
       y: 0,
     }
-
     init()
     animate()
 
@@ -34,23 +35,19 @@ export default Vue.extend({
         alpha: true,
       })
       renderer.setPixelRatio(window.devicePixelRatio)
-      renderer.setSize(canvas.offsetWidth, canvas.offsetHeight)
+      renderer.setSize(WrapWidth, WrapHeight)
 
       // camera
 
-      camera = new THREE.PerspectiveCamera(
-        40,
-        window.innerWidth / window.innerHeight,
-        1,
-        1000
-      )
-      camera.position.set(15, 20, 30)
+      camera = new THREE.PerspectiveCamera(40, WrapWidth / WrapHeight, 1, 1000)
+      camera.position.set(15, 20, 20)
       scene.add(camera)
 
       // controls
 
       controls = new OrbitControls(camera, renderer.domElement)
       controls.enableZoom = false
+      controls.rotateSpeed = 0.4
       // controls.minDistance = 20
       // controls.maxDistance = 50
       // controls.maxPolarAngle = Math.PI / 2
@@ -133,15 +130,15 @@ export default Vue.extend({
 
       //
 
-      document.addEventListener('mousemove', onDocumentMouseMove, false)
+      canvas.addEventListener('mousemove', onDocumentMouseMove, false)
       window.addEventListener('resize', onWindowResize)
     }
 
     function onWindowResize() {
-      camera.aspect = window.innerWidth / window.innerHeight
+      camera.aspect = WrapWidth / WrapHeight
       camera.updateProjectionMatrix()
 
-      renderer.setSize(window.innerWidth, window.innerHeight)
+      renderer.setSize(WrapWidth, WrapHeight)
     }
     function onDocumentMouseMove(event) {
       // the following line would stop any other event handler from firing
@@ -149,12 +146,11 @@ export default Vue.extend({
       // event.preventDefault();
 
       // update the mouse variable
-      mouse.x = (event.clientX / window.innerWidth) * 2 - 1
-      mouse.y = -(event.clientY / window.innerHeight) * 2 + 1
+      mouse.x = (event.offsetX / WrapWidth) * 2 - 1
+      mouse.y = -(event.offsetY / WrapHeight) * 2 + 1
     }
     function animate() {
       requestAnimationFrame(animate)
-
       raycaster.setFromCamera(mouse, camera)
       const intersects = raycaster.intersectObjects(group.children, true)
 
@@ -178,6 +174,7 @@ export default Vue.extend({
 
 <style lang="scss" scoped>
 #container {
+  position: relative;
   width: 100%;
   height: 100%;
   & > canvas {

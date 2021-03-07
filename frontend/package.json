@@ -16,7 +16,9 @@
     "core-js": "^3.8.3",
     "nuxt": "^2.14.12",
     "nuxt-fullpage.js": "0.0.3",
-    "three": "^0.126.1"
+    "swiper": "^6.5.0",
+    "three": "^0.126.1",
+    "vue-awesome-swiper": "^4.1.1"
   },
   "devDependencies": {
     "@nuxt/types": "^2.14.12",

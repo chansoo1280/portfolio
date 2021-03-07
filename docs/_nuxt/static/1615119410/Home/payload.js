@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/Home", {data:[{}],fetch:{},mutations:[["nav\u002FsetIdx",0]]});

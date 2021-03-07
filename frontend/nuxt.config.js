@@ -25,6 +25,7 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    { src: '~/plugins/vue-awesome-swiper', mode: 'client' },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -50,9 +51,18 @@ export default {
     ],
     babel: { compact: true }
   },
-  router: { base: process.env.NODE_ENV === 'production'
+  router: { 
+    base: process.env.NODE_ENV === 'production'
   ? '/portfolio'
-  : '/' },
+  : '/',
+  extendRoutes(routes, resolve) {
+    routes.push({
+      name: 'Home',
+      path: '/',
+      component: resolve(__dirname, 'pages/Home.vue')
+    })
+  }
+},
   generate: {
     dir: '../docs'
   }

@@ -1,0 +1,33 @@
+<template>
+  <main ref="main" class="l_main">
+    <h1>Works</h1>
+    <WorkSlide />
+  </main>
+</template>
+
+<script lang="ts">
+import Vue from 'vue'
+import { mapActions } from 'vuex'
+import WorkSlide from '~/components/WorkSlide.vue'
+
+export default Vue.extend({
+  name: 'Works',
+  components: { WorkSlide },
+  data() {
+    return {}
+  },
+  computed: {},
+  mounted() {
+    this.setDisabled(true)
+  },
+  methods: {
+    ...mapActions({
+      setDisabled: 'nav/setDisabled',
+    }),
+  },
+})
+</script>
+<style lang="scss" scoped>
+.l_main {
+}
+</style>

@@ -1,55 +1,159 @@
 <template>
   <div class="l_wrap">
+    <h1 class="l_wrap__title">
+      <button @click="addTodo('123123')">Chansoo's Web</button>
+    </h1>
+    <nav class="l_wrap__paging">
+      <ol>
+        <li v-for="obj in nav.list" :key="obj.idx">
+          <button
+            :class="{ s_active: obj.idx === active_idx }"
+            @click="goPage(obj.idx)"
+          >
+            <em></em>
+            <div>
+              <span>{{ obj.title }}</span>
+            </div>
+          </button>
+        </li>
+      </ol>
+    </nav>
     <Nuxt />
   </div>
 </template>
+<script lang="ts">
+import Vue from 'vue'
+import { mapState, mapActions } from 'vuex'
+export default Vue.extend({
+  data() {
+    return {
+      nav: {
+        duration: 400,
+        list: [
+          {
+            idx: 0,
+            title: 'Home',
+          },
+          {
+            idx: 1,
+            title: 'Skills',
+          },
+          {
+            idx: 2,
+            title: 'Works',
+          },
+          // {
+          //   idx: 3,
+          //   title: 'Blog',
+          // },
+          // {
+          //   idx: 4,
+          //   title: 'Connect',
+          // },
+        ],
+      },
+    }
+  },
+  computed: {
+    ...mapState('nav', ['active_idx', 'disabled']),
+  },
+  created() {
+    for (let i = 0; i < this.nav.list.length; i++) {
+      if (this.$route.path.includes(this.nav.list[i].title)) {
+        this.setIdx(this.nav.list[i].idx)
+        break
+      }
+    }
+  },
+  mounted() {
+    document.addEventListener('wheel', (e: any) => {
+      if (e.wheelDelta > 0) {
+        this.goPrevPage()
+      } else {
+        this.goNextPage()
+      }
+    })
+  },
+  methods: {
+    goPage(idx: number) {
+      this.setDisabled(true)
+      this.setIdx(idx)
+      this.$router.push('/' + this.nav.list[idx].title)
+      setTimeout(() => {
+        this.setDisabled(false)
+      }, this.nav.duration)
+    },
+    goNextPage() {
+      if (this.disabled === true) return
+      if (this.active_idx < this.nav.list.length - 1) {
+        this.goPage(this.active_idx + 1)
+      }
+    },
+    goPrevPage() {
+      if (this.disabled === true) return
+      if (this.active_idx > 0) {
+        this.goPage(this.active_idx - 1)
+      }
+    },
+    ...mapActions({
+      setIdx: 'nav/setIdx',
+      setDisabled: 'nav/setDisabled',
+    }),
+  },
+})
+</script>
 
-<style>
-html {
-  font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    Roboto, 'Helvetica Neue', Arial, sans-serif;
-  font-size: 16px;
-  word-spacing: 1px;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  box-sizing: border-box;
+<style lang="scss" scoped>
+.l_wrap__title {
+  position: absolute;
+  top: 20px;
+  left: 20px;
 }
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-}
-
-.button--green {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #3b8070;
-  color: #3b8070;
-  text-decoration: none;
-  padding: 10px 30px;
-}
-
-.button--green:hover {
-  color: #fff;
-  background-color: #3b8070;
-}
-
-.button--grey {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #35495e;
-  color: #35495e;
-  text-decoration: none;
-  padding: 10px 30px;
-  margin-left: 15px;
-}
-
-.button--grey:hover {
-  color: #fff;
-  background-color: #35495e;
+.l_wrap__paging {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translate(0, -50%);
+  & > ol {
+    & > li {
+      margin: 20px;
+      display: flex;
+      align-items: center;
+      height: 30px;
+      & > button {
+        outline: 0;
+        display: flex;
+        align-items: center;
+        height: 100%;
+        & > em {
+          z-index: 2;
+          transition: transform 0.3s;
+          display: block;
+          width: 10px;
+          height: 10px;
+          background: #000;
+          border-radius: 100%;
+        }
+        & > div {
+          padding-right: 10px;
+          overflow: hidden;
+          & > span {
+            display: block;
+            transition: transform 0.3s;
+            transform: translate(-100%, 0);
+          }
+        }
+        &.s_active > em,
+        &:hover > em {
+          transform: scale(1.5);
+        }
+        &:hover > em + div {
+          & > span {
+            transform: translate(10px, 0);
+          }
+        }
+      }
+    }
+  }
 }
 </style>
