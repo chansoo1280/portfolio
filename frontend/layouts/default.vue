@@ -1,7 +1,7 @@
 <template>
   <div class="l_wrap">
     <h1 class="l_wrap__title">
-      <button @click="addTodo('123123')">Chansoo's Web</button>
+      <!-- <button @click="addTodo('123123')">Chansoo's Web</button> -->
     </h1>
     <nav class="l_wrap__paging">
       <ol>
@@ -18,7 +18,7 @@
         </li>
       </ol>
     </nav>
-    <Nuxt />
+    <Nuxt keep-alive :keep-alive-props="{ include: ['Works'] }" />
   </div>
 </template>
 <script lang="ts">
@@ -42,17 +42,24 @@ export default Vue.extend({
             idx: 2,
             title: 'Works',
           },
-          // {
-          //   idx: 3,
-          //   title: 'Blog',
-          // },
-          // {
-          //   idx: 4,
-          //   title: 'Connect',
-          // },
+          {
+            idx: 3,
+            title: 'Blog',
+          },
+          {
+            idx: 4,
+            title: 'Connect',
+          },
         ],
       },
     }
+  },
+  watch: {
+    $route() {
+      setTimeout(() => {
+        this.setDisabled(false)
+      }, this.nav.duration)
+    },
   },
   computed: {
     ...mapState('nav', ['active_idx', 'disabled']),
@@ -79,9 +86,6 @@ export default Vue.extend({
       this.setDisabled(true)
       this.setIdx(idx)
       this.$router.push('/' + this.nav.list[idx].title)
-      setTimeout(() => {
-        this.setDisabled(false)
-      }, this.nav.duration)
     },
     goNextPage() {
       if (this.disabled === true) return
@@ -110,6 +114,7 @@ export default Vue.extend({
   left: 20px;
 }
 .l_wrap__paging {
+  z-index: 999;
   position: absolute;
   top: 50%;
   left: 0;
@@ -137,6 +142,7 @@ export default Vue.extend({
         & > div {
           padding-right: 10px;
           overflow: hidden;
+          line-height: 20px;
           & > span {
             display: block;
             transition: transform 0.3s;

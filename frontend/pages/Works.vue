@@ -7,7 +7,6 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { mapActions } from 'vuex'
 import WorkSlide from '~/components/WorkSlide.vue'
 
 export default Vue.extend({
@@ -17,14 +16,8 @@ export default Vue.extend({
     return {}
   },
   computed: {},
-  mounted() {
-    this.setDisabled(true)
-  },
-  methods: {
-    ...mapActions({
-      setDisabled: 'nav/setDisabled',
-    }),
-  },
+  mounted() {},
+  methods: {},
 })
 </script>
 <style lang="scss" scoped>

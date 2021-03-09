@@ -28,6 +28,8 @@ export default {
     { src: '~/plugins/vue-awesome-swiper', mode: 'client' },
   ],
 
+  pageTransition: 'home',
+
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
 
