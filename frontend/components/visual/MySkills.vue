@@ -183,8 +183,8 @@ export default Vue.extend({
       const canvas = document.querySelector('#c')
       const labelContainerElem = document.querySelector('#labels')
       if (controls.enabled === true) {
-        group.rotation.y += 0.002
         group.rotation.x += 0.002
+        group.rotation.y += 0.002
       }
       if (canvas) {
         const pointsGeometry = group.children[0].geometry
@@ -197,9 +197,9 @@ export default Vue.extend({
           const x = ((vertex.x / 10) * 0.5 + 0.5) * canvas.clientWidth
           const y = ((vertex.y / 10) * -0.5 + 0.5) * canvas.clientHeight
           const z = (vertex.z / 10) * -0.5 + 0.6
-          labelContainerElem.children[i].style.zIndex = (z / 3 + 0.8) * 10
-          // labelContainerElem.children[i].style.filter =
-          //   'blur(' + 2 * (1 - z) + 'px)'
+          labelContainerElem.children[i].style.zIndex = (z / 2 + 0.6) * 10
+          labelContainerElem.children[i].style.filter =
+            'blur(' + 2 * (1 - z) + 'px)'
           labelContainerElem.children[
             i
           ].style.transform = `translate(-50%, -50%) translate(${y}px,${x}px)scale(${

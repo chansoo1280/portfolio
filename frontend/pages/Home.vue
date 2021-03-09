@@ -7,10 +7,10 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import BfBg from '~/components/visual/Bf_bg.vue'
+import BfBg from '~/components/visual/BfBg.vue'
 export default Vue.extend({
   name: 'Home',
-  components: { 'bf-bg': BfBg },
+  components: { BfBg },
   data() {
     return {}
   },
