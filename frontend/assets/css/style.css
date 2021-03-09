@@ -76,21 +76,23 @@
   position: absolute; /* 캔버스 위에 자리잡도록 합니다. */
   left: 0; /* id=container 위 왼쪽에 기준하도록 합니다. */
   top: 0;
-  color: white;
+  color: #000;
 }
 #labels > div {
+  backface-visibility:hidden;
   padding: 10px;
   position: absolute; /* 캔버스 위에 자리잡도록 합니다.  */
   left: 0; /* 부모의 위 왼쪽에 기준하도록 합니다. */
   top: 0;
   cursor: pointer; /* 포인터가 위에 올라갔을 때 포인터 스타일을 바꿉니다. */
   font-size: large;
+  font-weight:500;
   user-select: none; /* 텍스트를 선택할 수 없도록 합니다. */
 
   white-space: nowrap;
-  text-shadow:         /* 글자에 검은 테두리를 두릅니다. */ -1px -1px 0 #000,
+  /* text-shadow:       -1px -1px 0 #000,
     0 -1px 0 #000, 1px -1px 0 #000, 1px 0 0 #000, 1px 1px 0 #000, 0 1px 0 #000,
-    -1px 1px 0 #000, -1px 0 0 #000;
+    -1px 1px 0 #000, -1px 0 0 #000; */
 }
 #labels > div:hover {
   color: red;

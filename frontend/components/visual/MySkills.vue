@@ -17,6 +17,56 @@ export default Vue.extend({
     return {}
   },
   mounted() {
+    const skills = [
+      {
+        idx: 0,
+        name: 'Vue.js',
+      },
+      {
+        idx: 1,
+        name: 'HTML',
+      },
+      {
+        idx: 2,
+        name: 'CSS',
+      },
+      {
+        idx: 3,
+        name: 'react.js',
+      },
+      {
+        idx: 4,
+        name: 'RN',
+      },
+      {
+        idx: 5,
+        name: 'THREE.js',
+      },
+      {
+        idx: 6,
+        name: 'node.js',
+      },
+      {
+        idx: 7,
+        name: 'c3.js',
+      },
+      {
+        idx: 8,
+        name: 'Github',
+      },
+      {
+        idx: 9,
+        name: 'vue',
+      },
+      {
+        idx: 10,
+        name: 'vue',
+      },
+      {
+        idx: 11,
+        name: 'vue',
+      },
+    ]
     const raycaster = new THREE.Raycaster()
     const WrapWidth = window.innerWidth * 0.4
     const WrapHeight = window.innerWidth * 0.4
@@ -78,7 +128,7 @@ export default Vue.extend({
 
       // points
 
-      let dodecahedronGeometry = new THREE.DodecahedronGeometry(10)
+      let dodecahedronGeometry = new THREE.IcosahedronGeometry(8)
 
       // if normal and uv attributes are not removed, mergeVertices() can't consolidate indentical vertices with different normal/uv data
 
@@ -104,34 +154,10 @@ export default Vue.extend({
         const y = ((vertex.y / 10) * -0.5 + 0.5) * canvas.clientHeight
         const z = (vertex.z / 10) * -0.5 + 0.6
         const elem = document.createElement('div')
-        elem.textContent = i
+        elem.textContent = skills[i].name
         elem.style.transform = `translate(-50%, -50%) translate(${x}px,${y}px)scale(${z})`
         labelContainerElem.appendChild(elem)
-
-        // labelContainerElem.children[
-        //   i
-        // ].style.transform = `translate(-50%, -50%) translate(${x}px,${y}px)`
-        // vertices.push(vertex)
       }
-      // convex hull
-
-      // const meshMaterial = new THREE.MeshLambertMaterial({
-      //   color: '#ffffff',
-      //   opacity: 0.5,
-      //   transparent: true,
-      // })
-
-      // const meshGeometry = new ConvexGeometry(vertices)
-
-      // const mesh1 = new THREE.Mesh(meshGeometry, meshMaterial)
-      // mesh1.material.side = THREE.BackSide // back faces
-      // mesh1.renderOrder = 0
-      // group.add(mesh1)
-
-      // const mesh2 = new THREE.Mesh(meshGeometry, meshMaterial.clone())
-      // mesh2.material.side = THREE.FrontSide // front faces
-      // mesh2.renderOrder = 1
-      // group.add(mesh2)
       labelContainerElem.addEventListener('mouseover', onLabelMouseOver)
       labelContainerElem.addEventListener('mouseleave', onLabelMouseLeave)
       canvas.addEventListener('mousemove', onDocumentMouseMove, false)
@@ -150,56 +176,38 @@ export default Vue.extend({
       renderer.setSize(WrapWidth, WrapHeight)
     }
     function onDocumentMouseMove(event) {
-      // the following line would stop any other event handler from firing
-      // (such as the mouse's TrackballControls)
-      // event.preventDefault();
-
-      // update the mouse variable
       mouse.x = (event.offsetX / WrapWidth) * 2 - 1
       mouse.y = -(event.offsetY / WrapHeight) * 2 + 1
     }
     function animate() {
       const canvas = document.querySelector('#c')
       const labelContainerElem = document.querySelector('#labels')
-      requestAnimationFrame(animate)
-      // raycaster.setFromCamera(mouse, camera)
-      // const intersects = raycaster.intersectObjects(group.children, true)
       if (controls.enabled === true) {
         group.rotation.y += 0.002
         group.rotation.x += 0.002
       }
-      // if (intersects.length !== 0) {
-      //   // controls.enabled = true
-      // } else {
-      //   // controls.enabled = false
-      // }
-      const pointsGeometry = group.children[0].geometry
-      const positionAttribute = pointsGeometry.getAttribute('position')
-      const vertices = []
-      for (let i = 0; i < positionAttribute.count; i++) {
-        const vertex = new THREE.Vector3()
-        vertex.fromBufferAttribute(positionAttribute, i)
-        group.children[0].localToWorld(vertex)
-        const x = ((vertex.x / 10) * 0.5 + 0.5) * canvas.clientWidth
-        const y = ((vertex.y / 10) * -0.5 + 0.5) * canvas.clientHeight
-        const z = (vertex.z / 10) * -0.5 + 0.6
-        labelContainerElem.children[i].style.zIndex = (z / 3 + 0.8) * 10
-        labelContainerElem.children[
-          i
-        ].style.transform = `translate(-50%, -50%) translate(${y}px,${x}px)scale(${
-          z / 3 + 0.8
-        })`
+      if (canvas) {
+        const pointsGeometry = group.children[0].geometry
+        const positionAttribute = pointsGeometry.getAttribute('position')
+        const vertices = []
+        for (let i = 0; i < positionAttribute.count; i++) {
+          const vertex = new THREE.Vector3()
+          vertex.fromBufferAttribute(positionAttribute, i)
+          group.children[0].localToWorld(vertex)
+          const x = ((vertex.x / 10) * 0.5 + 0.5) * canvas.clientWidth
+          const y = ((vertex.y / 10) * -0.5 + 0.5) * canvas.clientHeight
+          const z = (vertex.z / 10) * -0.5 + 0.6
+          labelContainerElem.children[i].style.zIndex = (z / 3 + 0.8) * 10
+          // labelContainerElem.children[i].style.filter =
+          //   'blur(' + 2 * (1 - z) + 'px)'
+          labelContainerElem.children[
+            i
+          ].style.transform = `translate(-50%, -50%) translate(${y}px,${x}px)scale(${
+            z / 3 + 0.8
+          })`
+        }
       }
-      // for (let i = 0; i < vertices.length; i++) {
-      //   tempV.project(camera)
-      //   const x = (tempV.x * 0.5 + 0.5) * canvas.clientWidth
-      //   const y = (tempV.y * -0.5 + 0.5) * canvas.clientHeight
-      //   console.log(x, y)
-      //   // 이름표 요소를 해당 좌표로 옮깁니다.
-      //   labelContainerElem.children[
-      //     i
-      //   ].style.transform = `translate(-50%, -50%) translate(${x}px,${y}px)`
-      // }
+      requestAnimationFrame(animate)
       render()
     }
 
