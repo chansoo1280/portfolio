@@ -73,6 +73,8 @@
 
   
 #labels {
+  transition: transform 1s ease;
+  transform-origin: left top;
   position: absolute; /* 캔버스 위에 자리잡도록 합니다. */
   left: 0; /* id=container 위 왼쪽에 기준하도록 합니다. */
   top: 0;
