@@ -21,5 +21,11 @@ export default Vue.extend({
 </script>
 <style lang="scss" scoped>
 .l_main {
+  & > h1 {
+    position: absolute;
+    top: 20px;
+    left: 50px;
+    font-size: 50px;
+  }
 }
 </style>

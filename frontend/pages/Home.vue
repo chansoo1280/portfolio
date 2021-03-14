@@ -14,6 +14,9 @@ export default Vue.extend({
   data() {
     return {}
   },
+  head: {
+    title: "Chansoo's Portfolio - Home",
+  },
   mounted() {},
   methods: {},
 })

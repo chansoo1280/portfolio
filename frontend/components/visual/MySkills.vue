@@ -1,42 +1,39 @@
 <template>
-  <div id="container">
+  <div id="container" class="skills">
     <canvas id="c"></canvas>
     <div
       id="labels"
       :style="'transform:' + (controls.isSelected ? 'scale(1.5)' : 'scale(1)')"
     ></div>
-
-    <div class="controls">
-      <input
-        v-model="inputX"
-        onchange="group.rotation.x = this.value"
-        type="range"
-        max="6.28"
-        min="0"
-        step="0.001"
-      />
-      <input
-        v-model="inputX"
-        onchange="group.rotation.x = this.value"
-        type="number"
-        step="0.001"
-      />
-      <input
-        v-model="inputY"
-        onchange="group.rotation.y = this.value"
-        type="range"
-        max="6.28"
-        min="0"
-        step="0.001"
-      />
-      <input
-        v-model="inputY"
-        onchange="group.rotation.y = this.value"
-        type="number"
-        step="0.001"
-      />
-      <button @click="bulrLabels()">exit</button>
-    </div>
+    <transition appear name="desc" mode="out-in" :duration="400">
+      <div v-if="controls.isSelected" key="desc" class="skills__desc">
+        <div class="skills__desc__header">
+          <button @click="bulrLabels()">
+            <i class="xi-close-thin"></i>
+            <span class="ir">닫기</span>
+          </button>
+          <h3>{{ desc.name }}</h3>
+        </div>
+        <div class="skills__desc__con">
+          <span>{{ desc.title }}</span>
+          <p>{{ desc.con }}</p>
+        </div>
+        <div class="skills__desc__footer">
+          <ul>
+            <li>
+              <a href="#a"> </a>
+            </li>
+            <li>
+              <a href="#a"> </a>
+            </li>
+            <li>
+              <a href="#a"> </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div v-else key="noti" class="skills__noti">기술을 선택해 주세요!</div>
+    </transition>
   </div>
 </template>
 
@@ -49,10 +46,18 @@ import Vue from 'vue'
 export default Vue.extend({
   data() {
     return {
-      inputX: 0,
-      inputY: 0,
       controls: {
         isSelected: false,
+      },
+      desc: {
+        idx: 0,
+        name: 'Vue.js',
+        title: '"가장 많이 쓴 모던프레임워크"',
+        con: '설명설명 ',
+        rotate: {
+          x: 3.561,
+          y: 0.464,
+        },
       },
     }
   },
@@ -61,6 +66,8 @@ export default Vue.extend({
       {
         idx: 0,
         name: 'Vue.js',
+        title: '"가장 많이 쓴 모던프레임워크"',
+        con: '',
         rotate: {
           x: 3.561,
           y: 0.464,
@@ -69,6 +76,8 @@ export default Vue.extend({
       {
         idx: 1,
         name: 'HTML',
+        title: '"웹표준과 접근성을 준수한 마크업"',
+        con: '',
         rotate: {
           x: 6.034,
           y: 3.81,
@@ -77,6 +86,8 @@ export default Vue.extend({
       {
         idx: 2,
         name: 'CSS',
+        title: '"가장 많이 쓴 모던프레임워크"',
+        con: '설명설명 ',
         rotate: {
           x: 5.129,
           y: 0,
@@ -85,6 +96,8 @@ export default Vue.extend({
       {
         idx: 3,
         name: 'react.js',
+        title: '"가장 많이 쓴 모던프레임워크"',
+        con: '설명설명 ',
         rotate: {
           x: 5.074,
           y: 3.233,
@@ -93,6 +106,8 @@ export default Vue.extend({
       {
         idx: 4,
         name: 'RN',
+        title: '"가장 많이 쓴 모던프레임워크"',
+        con: '설명설명 ',
         rotate: {
           x: 4.228,
           y: 2.474,
@@ -132,7 +147,7 @@ export default Vue.extend({
       },
       {
         idx: 9,
-        name: 'vue',
+        name: 'nuxt.js',
         rotate: {
           x: 1.086,
           y: 0.668,
@@ -140,7 +155,7 @@ export default Vue.extend({
       },
       {
         idx: 10,
-        name: 'vue',
+        name: 'next.js',
         rotate: {
           x: 0.428,
           y: 1.572,
@@ -148,7 +163,7 @@ export default Vue.extend({
       },
       {
         idx: 11,
-        name: 'vue',
+        name: 'nest.js',
         rotate: {
           x: 1.933,
           y: 3.052,
@@ -173,6 +188,8 @@ export default Vue.extend({
     }
     window.controls = controls
 
+    const Duration = 100
+    const PI2 = Number(Math.PI.toFixed(3)) * 2
     init.call(this)
     animate()
 
@@ -268,11 +285,25 @@ export default Vue.extend({
       window.addEventListener('resize', onWindowResize)
     }
     function onLabelClick(e) {
-      controls.enabled = false
+      const labelContainerElem = document.querySelector('#labels')
       const target = e.target
+      const labelList = document.querySelector('#labels').children
+      controls.enabled = false
       controls.sel_idx = target.dataset.idx
       controls.isSelected = true
+
+      for (let i = 0; i < labelList.length; i++) {
+        if (
+          labelList[i].classList.contains('s_selected') &&
+          controls.sel_idx !== i
+        ) {
+          labelList[i].classList.remove('s_selected')
+        }
+      }
+
+      labelContainerElem.children[controls.sel_idx].classList.add('s_selected')
       this.controls.isSelected = true
+      this.desc = skills[controls.sel_idx]
     }
     function onLabelMouseOver() {
       if (controls.isSelected === true) return
@@ -304,6 +335,7 @@ export default Vue.extend({
         const y = ((vertex.y / 10) * -0.5 + 0.5) * canvas.clientHeight
         const z = (vertex.z / 10) * -0.5 + 0.5
         labelContainerElem.children[i].style.zIndex = ((z + 0.1) / 2 + 0.6) * 10
+        labelContainerElem.children[i].style.opacity = (z + 0.1) / 2 + 0.6
         labelContainerElem.children[i].style.filter =
           'blur(' + 2 * (1 - z) + 'px)'
         labelContainerElem.children[
@@ -318,12 +350,10 @@ export default Vue.extend({
         }
       }
     }
-    const Duration = 100
     function lerp(start, end, l) {
       return start + (end - start) * l
     }
     function animatePos(idx) {
-      console.log(idx)
       const timeSinceStart = (controls.now - controls.startTime) * 0.001
       const l = Math.min(timeSinceStart / Duration, 1)
       group.rotation.x = lerp(controls.startValue.x, skills[idx].rotate.x, l)
@@ -338,10 +368,9 @@ export default Vue.extend({
     }
     function animate(now) {
       const canvas = document.querySelector('#c')
-      const labelContainerElem = document.querySelector('#labels')
       if (controls.enabled) {
-        group.rotation.x = (group.rotation.x + 0.002) % (Math.PI * 2)
-        group.rotation.y = (group.rotation.y + 0.002) % (Math.PI * 2)
+        group.rotation.x = (group.rotation.x + 0.002) % PI2
+        group.rotation.y = (group.rotation.y + 0.002) % PI2
       } else if (controls.isSelected === true) {
         if (controls.startTime === null) {
           controls.startTime = performance.now()
@@ -349,8 +378,8 @@ export default Vue.extend({
         if (controls.sel_idx) {
           controls.now = now
           controls.startValue = {
-            x: Number(group.rotation.x),
-            y: Number(group.rotation.y),
+            x: group.rotation.x,
+            y: group.rotation.y,
           }
           animatePos(controls.sel_idx)
         }
@@ -369,6 +398,12 @@ export default Vue.extend({
   },
   methods: {
     bulrLabels() {
+      const labelList = document.querySelector('#labels').children
+      for (let i = 0; i < labelList.length; i++) {
+        if (labelList[i].classList.contains('s_selected')) {
+          labelList[i].classList.remove('s_selected')
+        }
+      }
       this.controls.isSelected = false
       controls.isSelected = false
       controls.enabled = true
@@ -378,26 +413,93 @@ export default Vue.extend({
 </script>
 
 <style lang="scss" scoped>
-.controls {
-  display: flex;
-}
-#container {
+.skills {
+  margin: 0 0 0 80px;
   position: relative;
-  width: 768px;
-  height: 768px;
-  /* &::before {
-    content: '';
-    display: block;
-    width: 10px;
-    height: 10px;
-    position: absolute;
-    top: 174px;
-    left: 217px;
-    background: #000;
-  } */
+  display: flex;
+  height: 100%;
   & > canvas {
     width: 100%;
     height: 100%;
+    max-width: 768px;
+    max-height: 768px;
   }
+}
+.skills__desc {
+  position: relative;
+  z-index: 9;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  height: 100%;
+  box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.8);
+}
+.skills__desc__header {
+  animation: slide-ani 0.3s 0.4s forwards;
+  transform: translateX(20px);
+  opacity: 0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 30px;
+  & > button {
+    padding: 0 10px;
+    height: 40px;
+    & > i {
+      font-size: 30px;
+    }
+  }
+}
+
+.skills__desc__con {
+  animation: slide-ani 0.3s 0.6s forwards;
+  transform: translateX(20px);
+  opacity: 0;
+  flex: 1;
+  width: 100%;
+  & > span {
+    padding: 20px 10px;
+    display: block;
+    box-sizing: border-box;
+    font-size: 40px;
+    font-weight: 500;
+    text-align: center;
+  }
+  & > p {
+    font-size: 20px;
+  }
+}
+.skills__desc__footer {
+  animation: slide-ani 0.3s 0.8s forwards;
+  transform: translateX(20px);
+  opacity: 0;
+  & > ul {
+    display: flex;
+
+    & > li {
+      flex: 1;
+    }
+  }
+}
+@keyframes slide-ani {
+  0% {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}
+.skills__noti {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  height: 100%;
+  font-size: 30px;
 }
 </style>

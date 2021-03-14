@@ -81,13 +81,14 @@
   color: #000;
 }
 #labels > div {
+  transition:font-size .3s, font-weight .3s;
   backface-visibility:hidden;
   padding: 10px;
   position: absolute; /* 캔버스 위에 자리잡도록 합니다.  */
   left: 0; /* 부모의 위 왼쪽에 기준하도록 합니다. */
   top: 0;
   cursor: pointer; /* 포인터가 위에 올라갔을 때 포인터 스타일을 바꿉니다. */
-  font-size: large;
+  font-size: 22px;
   font-weight:500;
   user-select: none; /* 텍스트를 선택할 수 없도록 합니다. */
 
@@ -96,6 +97,32 @@
     0 -1px 0 #000, 1px -1px 0 #000, 1px 0 0 #000, 1px 1px 0 #000, 0 1px 0 #000,
     -1px 1px 0 #000, -1px 0 0 #000; */
 }
+#labels > div.s_selected{
+  font-size:26px;
+  font-weight:bold;
+}
 #labels > div:hover {
   color: red;
+}
+/* .desc-enter-active > div,
+.desc-leave-active > div {
+  transform: translate(0, 0);
+  transition: transform 2.4s, opacity 0.4s;
+}
+.desc-enter > div,
+.desc-leave-active > div {
+  opacity: 0;
+  transform: translate(-300px, 0);
+} */
+
+.desc-enter-active {
+  transition: all .3s ease;
+}
+.desc-leave-active {
+  transition: all .3s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.desc-enter, .desc-leave-to 
+/* .slide-fade-leave-active below version 2.1.8 */ {
+  transform: translateX(10px);
+  opacity: 0;
 }

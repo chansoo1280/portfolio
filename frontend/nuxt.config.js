@@ -1,12 +1,11 @@
 export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
-
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'frontend',
+    title: 'Chansoo\'s Portfolio',
     htmlAttrs: {
-      lang: 'en',
+      lang: 'ko',
     },
     meta: [
       { charset: 'utf-8' },
