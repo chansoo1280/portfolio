@@ -20,6 +20,9 @@ export default Vue.extend({
   data() {
     return {}
   },
+  head: {
+    title: "Chansoo's Portfolio - Blog",
+  },
   mounted() {},
   methods: {},
 })

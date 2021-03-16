@@ -391,7 +391,7 @@ export default Vue.extend({
         const z = (vertex.z / 10) * -0.5 + 0.5
         elLabel.style.zIndex = ((z + 0.1) / 2 + 0.6) * 10
         elLabel.style.opacity = (z + 0.1) / 2 + 0.6
-        elLabel.style.filter = 'blur(' + 2 * (1 - z) + 'px)'
+        elLabel.style.filter = 'blur(' + (2 * (1 - z) - 0.3) + 'px)'
         elLabel.style.transform = `translate(-50%, -50%) translate(${y}px,${x}px)scale(${
           (z + 0.1) / 3 + 0.8
         })`
@@ -438,7 +438,7 @@ export default Vue.extend({
   flex: 1;
   height: 100%;
   box-sizing: border-box;
-  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
 }
 .skills__desc__header {
   animation: slide-ani 0.3s 0.4s forwards;

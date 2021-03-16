@@ -1,17 +1,18 @@
 <template>
   <main ref="main" class="l_main">
-    <h1>Works</h1>
-    <WorkSlide />
+    <h1>Works - {{ $route.params.id }}</h1>
+    뒷 배경 고정
+    <h2>프로젝트 내용</h2>
+    큰 배너 client skill date
   </main>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
-import WorkSlide from '~/components/WorkSlide.vue'
 
 export default Vue.extend({
-  name: 'Works',
-  components: { WorkSlide },
+  name: 'WorksInfo',
+  layout: 'info',
   data() {
     return {}
   },

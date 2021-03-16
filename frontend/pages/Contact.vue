@@ -1,6 +1,6 @@
 <template>
   <main class="l_main">
-    <h1>Connect</h1>
+    <h1>Contact</h1>
     <ul class="contents">
       <li>
         <h2>address</h2>
@@ -22,10 +22,13 @@
 import Vue from 'vue'
 
 export default Vue.extend({
-  name: 'Connect',
+  name: 'Contact',
   components: {},
   data() {
     return {}
+  },
+  head: {
+    title: "Chansoo's Portfolio - Contact",
   },
   mounted() {},
   methods: {},

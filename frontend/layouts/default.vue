@@ -48,7 +48,7 @@ export default Vue.extend({
           },
           {
             idx: 4,
-            title: 'Connect',
+            title: 'Contact',
           },
         ],
       },
