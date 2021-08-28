@@ -1,0 +1,126 @@
+@charset "utf-8";
+/* =========================== default =========================== */
+/*
+	각 project마다 있는 기본 css 파일입니다.
+	기본 스타일을 지정합니다.
+*/
+:focus{outline:-webkit-focus-ring-color auto 2px;}
+/* 스킵네비게이션 */
+.skip{z-index:99999;display:block;width:100px;height:40px;position:fixed;top:-100%;left:0;background:#000;color:#fff;line-height:40px;text-align:center;transition:all .3s;}
+.skip:focus{top:0;}
+
+/* 전체 폰트 설정 */
+body,input,select,textarea,button{font-size:12px;font-family:'NotoKR', sans-serif;font-weight:400;color:#727272;}
+br{font-family: sans-serif;}
+
+em{font-style:normal;}
+
+img{width:100%;height:auto;}
+img,input,select,textarea,button{vertical-align:middle;}
+
+caption,legend{position:absolute;display:block;text-indent:-9999px;line-height:0;}
+hr{display:none;}
+
+/* active 요소 */
+a, span, em, strong, i{font-size:inherit;font-weight:inherit;color:inherit;}
+button{cursor:pointer;background:transparent;}
+label{cursor:pointer;}
+
+/* Form */
+textarea{width:100%;height:30px;box-sizing:border-box;border:1px solid #dbdbdb;resize:none;}
+select {width:100%;height:30px;box-sizing:border-box;border:1px solid #dbdbdb;font-size:13px;color:#373737;
+-webkit-appearance: none;
+-moz-appearance: none;
+-o-appearance: none;
+appearance: none;
+cursor:pointer;}
+   /* For IE10 */
+select::-ms-expand {
+  display: none;
+}
+input[type=tel],
+input[type=time],
+input[type=text],
+input[type=password],
+input[type=search],
+input[type=email],
+input[type=file],
+input[type=url],
+input[type=number],
+input[type=date]{width:100%;height:30px;box-sizing:border-box;
+    appearance: none;
+    -moz-appearance: none;
+-webkit-appearance: none;}
+   /* Chrome, Safari, Edge, Opera */
+/* input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+} */
+   /* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+input::placeholder,
+input::-webkit-input-placeholder{color:#b5b5b5; font-size:12px; line-height:100%;}
+
+select[disabled],
+input[type=tel][readonly],
+input[type=password][readonly],
+input[type=email][readonly],
+input[type=search][readonly],
+input[type=tel][disabled],
+input[type=text][disabled],
+input[type=password][disabled],
+input[type=search][disabled],
+input[type=email][disabled],
+textarea[disabled]{pointer-events:none!important;background:#F9F9F9!important;border-color:#c0c0c0!important;color:#A6A8B2!important;}
+
+/* outline */
+input:focus,
+select:focus{outline:0;}
+
+/* 기타 */
+.clear:after { content:""; display:block; clear:both;}
+
+.t_mgR{margin-right:10px;}
+
+*::-webkit-scrollbar {
+  margin: 0;
+  padding: 0;
+  width: 10px;
+}
+*::-webkit-scrollbar-button {
+  background-color: #eee;
+  height: 1px;
+  width: 12px;
+}
+*::-webkit-scrollbar-corner {
+  background-color: #999;
+}
+*::-webkit-scrollbar-thumb {
+  background: #999;
+  border-radius: 0;
+}
+*::-webkit-scrollbar-thumb:hover,
+*::-webkit-scrollbar-thumb:active {
+  background: #000;
+}
+*::-webkit-scrollbar-track {
+  background-color: #eee;
+  border-radius: 0;
+  border: 0;
+}
+*::-webkit-scrollbar-track:hover,
+*::-webkit-scrollbar-track:active {
+  background: #eee;
+}
+
+/* ===================== reset-vue ===================== */
+[v-clock]{display:none;}
+
+/* ===================== reset-flatpickr ===================== */
+/* .flatpickr-current-month input.cur-year{padding:0 !important;text-indent:8px;} */
+
+
+/* ===================== reset-swiper ===================== */
