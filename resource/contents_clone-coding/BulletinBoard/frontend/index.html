@@ -13,88 +13,88 @@
       <main class="l_main">
         <header class="m_header">
           <h1 class="m_header__title">콘텐츠 따라만들기 - 게시판</h1>
-          <a href="./pages/manage.html" class="m_btn">글 작성</a>
+          <a href="./pages/create.html" class="m_btn">글 작성</a>
         </header>
         <div class="m_tbl">
           <table class="m_tbl__table">
             <thead>
-              <tr>
-                <th class="m_tbl__table__thead__th">번호</th>
-                <th class="m_tbl__table__thead__th">제목</th>
-                <th class="m_tbl__table__thead__th">작성일</th>
+              <tr class="m_tbl__row m_tbl__row--title">
+                <th class="m_tbl__title">번호</th>
+                <th class="m_tbl__title">제목</th>
+                <th class="m_tbl__title">작성일</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td class="m_tbl__table__tbody__td">1</td>
+              <tr class="m_tbl__row" onclick="window.location = './pages/info.html';">
+                <td class="m_tbl__text">1</td>
                 <td
-                  class="m_tbl__table__tbody__td m_tbl__table__tbody__td--left"
+                  class="m_tbl__text m_tbl__text--left"
                 >
                   새로운 게시글입니다.
                 </td>
-                <td class="m_tbl__table__tbody__td">2021-08-13</td>
+                <td class="m_tbl__text">2021-08-13</td>
               </tr>
-              <tr>
-                <td class="m_tbl__table__tbody__td">2</td>
+              <tr class="m_tbl__row">
+                <td class="m_tbl__text">2</td>
                 <td
-                  class="m_tbl__table__tbody__td m_tbl__table__tbody__td--left"
+                  class="m_tbl__text m_tbl__text--left"
                 >
                   새로운 게시글입니다.
                 </td>
-                <td class="m_tbl__table__tbody__td">2021-08-13</td>
+                <td class="m_tbl__text">2021-08-13</td>
               </tr>
-              <tr>
-                <td class="m_tbl__table__tbody__td">3</td>
+              <tr class="m_tbl__row">
+                <td class="m_tbl__text">3</td>
                 <td
-                  class="m_tbl__table__tbody__td m_tbl__table__tbody__td--left"
+                  class="m_tbl__text m_tbl__text--left"
                 >
                   새로운 게시글입니다.
                 </td>
-                <td class="m_tbl__table__tbody__td">2021-08-13</td>
+                <td class="m_tbl__text">2021-08-13</td>
               </tr>
-              <tr>
-                <td class="m_tbl__table__tbody__td">4</td>
+              <tr class="m_tbl__row">
+                <td class="m_tbl__text">4</td>
                 <td
-                  class="m_tbl__table__tbody__td m_tbl__table__tbody__td--left"
+                  class="m_tbl__text m_tbl__text--left"
                 >
                   새로운 게시글입니다.
                 </td>
-                <td class="m_tbl__table__tbody__td">2021-08-13</td>
+                <td class="m_tbl__text">2021-08-13</td>
               </tr>
             </tbody>
           </table>
-          <div class="m_tbl__paging">
-            <button class="m_tbl__paging__btn" type="button">
+          <div class="m_paging">
+            <button class="m_paging__btn" type="button">
               <img src="./images/arr_left.svg" alt="이전 페이지" />
             </button>
-            <ol class="m_tbl__paging__nums">
-              <li class="m_tbl__paging__nums__item">
-                <button class="m_tbl__paging__nums__item__btn" type="button">
+            <ol class="m_paging__nums">
+              <li>
+                <button class="m_paging__btn" type="button">
                   1
                 </button>
               </li>
-              <li class="m_tbl__paging__nums__item">
-                <button class="m_tbl__paging__nums__item__btn" type="button">
+              <li>
+                <button class="m_paging__btn" type="button">
                   2
                 </button>
               </li>
-              <li class="m_tbl__paging__nums__item">
-                <button class="m_tbl__paging__nums__item__btn" type="button">
+              <li>
+                <button class="m_paging__btn" type="button">
                   3
                 </button>
               </li>
-              <li class="m_tbl__paging__nums__item">
-                <button class="m_tbl__paging__nums__item__btn" type="button">
+              <li>
+                <button class="m_paging__btn" type="button">
                   4
                 </button>
               </li>
-              <li class="m_tbl__paging__nums__item">
-                <button class="m_tbl__paging__nums__item__btn" type="button">
+              <li>
+                <button class="m_paging__btn" type="button">
                   5
                 </button>
               </li>
             </ol>
-            <button class="m_tbl__paging__btn" type="button">
+            <button class="m_paging__btn" type="button">
               <img src="./images/arr_right.svg" alt="다음 페이지" />
             </button>
           </div>
