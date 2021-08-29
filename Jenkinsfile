@@ -16,7 +16,6 @@ node {
             cd /root
             docker-compose pull
             docker-compose up --force-recreate --build -d
-            docker restart nginx
             docker image prune -f
         '''
     }
