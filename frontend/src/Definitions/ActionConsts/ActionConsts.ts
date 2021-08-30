@@ -3,6 +3,7 @@ export const ActionConsts = {
         ResetReducer: "App_ResetReducer",
         SetSelCateReducer: "App_SetSelCateReducer",
         SetSelThemeReducer: "App_SetSelThemeReducer",
+        SetSelNavReducer: "App_SetSelNavReducer",
     },
     Home: {
         ResetReducer: "Home_ResetReducer",

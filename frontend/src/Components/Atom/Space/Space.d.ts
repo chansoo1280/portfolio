@@ -1,14 +1,12 @@
 import { IAtom } from "../Atom"
 
-declare namespace IButton {
+declare namespace ISpace {
     export interface IProps extends IAtom.IProps {
         href?: string
-        type?: "button" | "submit" | "reset"
-        size?: "large" | "middle" | "small"
+        type?: "Space" | "submit" | "reset"
         className?: string
-        flex?: boolean
         onClick?: (event: MouseEvent<HTMLDivElement, MouseEvent>) => void
     }
 }
 
-export { IButton }
+export { ISpace }

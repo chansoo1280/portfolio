@@ -1,0 +1,15 @@
+.main-view {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    &__img {
+        height: 188px;
+    }
+    &__title {
+        font-size: 32px;
+        font-weight: 700;
+    }
+}

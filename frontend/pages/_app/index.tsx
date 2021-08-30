@@ -18,6 +18,7 @@ import { AppWithStore, IStore } from "@Interfaces"
 import { persistor, wrapper } from "@Redux"
 import TheLayout, { LayoutCode } from "@Components/Layout"
 import "@Services/API/DateFormat"
+import { Nav } from "@Components"
 // #endregion Local Imports
 
 class WebApp extends App<AppWithStore> {
@@ -45,37 +46,39 @@ class WebApp extends App<AppWithStore> {
         this.props.router.events.off("routeChangeStart", this.handleRouteChange)
     }
     render() {
-        const { Component, pageProps, router, sel_theme }: any = this.props
+        const { Component, pageProps, router, sel_theme, sel_nav }: any = this.props
         const { nextPathname }: any = this.state
         const AppLayout = TheLayout[pageProps?.layout || LayoutCode.Default]
         return (
             <ThemeProvider theme={ThemeObj[ThemeType[sel_theme] || ThemeType.WHITE]}>
-                <TransitionGroup
-                    id="__TRANSITION"
-                    style={{
-                        overflow: "hidden",
-                        position: "relative",
-                        width: "100%",
-                        height: "100%",
-                        perspective: "500px",
-                    }}
-                >
-                    <CSSTransition appear={true} key={router.pathname} timeout={10000} classNames={pageProps?.transition || ""}>
-                        <div className={"l_transition " + nextPathname + "<-" + router.pathname}>
-                            <PersistGate persistor={persistor} loading={<div>Loading</div>}>
+                <PersistGate persistor={persistor} loading={<div>Loading</div>}>
+                    <Nav selIdx={sel_nav || null} />
+                    <TransitionGroup
+                        id="__TRANSITION"
+                        style={{
+                            overflow: "hidden",
+                            position: "relative",
+                            width: "100%",
+                            height: "100%",
+                            perspective: "500px",
+                        }}
+                    >
+                        <CSSTransition appear={true} key={router.pathname} timeout={10000} classNames={pageProps?.transition || ""}>
+                            <div className={"l_transition " + nextPathname + "<-" + router.pathname}>
                                 <AppLayout {...pageProps}>
                                     <Component {...pageProps} />
                                 </AppLayout>
-                            </PersistGate>
-                        </div>
-                    </CSSTransition>
-                </TransitionGroup>
+                            </div>
+                        </CSSTransition>
+                    </TransitionGroup>
+                </PersistGate>
             </ThemeProvider>
         )
     }
 }
 const mapStateToProps = (state: IStore) => ({
     sel_theme: state.app.sel_theme,
+    sel_nav: state.app.sel_nav,
 })
 
 // export default wrapper.withRedux(withRouter(WebApp))

@@ -1,0 +1,18 @@
+.btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    height: 36px;
+    border: 1px solid;
+    border-radius: 2px;
+    &--flex {
+        flex: 1;
+    }
+    &--lg {
+        height: 48px;
+    }
+    &--sm {
+        height: 24px;
+    }
+}

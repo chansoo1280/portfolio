@@ -1,3 +1,2 @@
-export * from "./Header"
-export * from "./AlertModal"
-export * from "./InfoNav"
+export * from "./Nav"
+export * from "./MainView"

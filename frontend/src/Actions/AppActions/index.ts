@@ -26,4 +26,11 @@ export const AppActions = {
             type: ActionConsts.App.SetSelCateReducer,
         })
     },
+
+    SetSelNav: (payload: IAppPage.Actions.ISetSelNavPayload) => async (dispatch: Dispatch) => {
+        dispatch({
+            payload: payload,
+            type: ActionConsts.App.SetSelNavReducer,
+        })
+    },
 }
