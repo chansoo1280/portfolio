@@ -5,7 +5,11 @@ import { ServerStyleSheet } from "styled-components"
 // #endregion Global Imports
 
 class WebAppDocument extends Document {
-    static async getInitialProps(ctx: DocumentContext) {
+    static async getInitialProps(ctx: DocumentContext): Promise<{
+        styles: JSX.Element
+        html: string
+        head?: (JSX.Element | null)[] | undefined
+    }> {
         const sheet = new ServerStyleSheet()
         const originalRenderPage = ctx.renderPage
 

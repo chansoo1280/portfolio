@@ -63,7 +63,6 @@ class WebApp extends App<AppWithStore> {
                             position: "relative",
                             width: "100%",
                             height: "100%",
-                            perspective: "500px",
                         }}
                     >
                         <CSSTransition appear={true} key={router.pathname} timeout={400} classNames={pageProps?.transition || ""}>

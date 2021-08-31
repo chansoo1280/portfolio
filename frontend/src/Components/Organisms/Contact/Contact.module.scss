@@ -1,0 +1,23 @@
+.contact {
+    margin-bottom: 40px;
+    padding: 0 20px;
+    &__item {
+        display: flex;
+        align-items: center;
+        height: 80px;
+        border-bottom: 1px solid;
+    }
+    &__icon {
+        padding: 0 10px;
+        font-size: 38px;
+    }
+    &__info {
+        flex: 1;
+        text-align: center;
+    }
+    &__text {
+        text-decoration: underline;
+        color: #222;
+        font-size: 18px;
+    }
+}

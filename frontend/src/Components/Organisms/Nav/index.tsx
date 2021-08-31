@@ -5,7 +5,7 @@ import classNames from "classnames"
 // #endregion Global Imports// #region Local Imports
 
 import { INav, NavIdx } from "./Nav.d"
-import styles from "./nav.module.scss"
+import styles from "./Nav.module.scss"
 import { useEffect } from "react"
 import { useRouter } from "next/router"
 
@@ -20,19 +20,23 @@ export const Nav = (props: INav.IProps): JSX.Element => {
         [styles["nav"]]: true,
         [styles["nav--active"]]: selIdx !== null,
     })
-    const touchObj = {
+    const touchObj: {
+        startTime: number | null
+        x: number | null
+        y: number | null
+    } = {
         startTime: null,
         x: null,
         y: null,
     }
-    const handleTouchStart = (e: any) => {
+    const handleTouchStart = (e: TouchEvent) => {
         // console.log(e)
         touchObj.startTime = e.timeStamp
         touchObj.x = e.touches[0].clientX
         touchObj.y = e.touches[0].clientY
     }
 
-    const handleTouchEnd = (e: any) => {
+    const handleTouchEnd = (e: TouchEvent) => {
         const endTime = e.timeStamp
         const endX = e.changedTouches[0].clientX
         const endY = e.changedTouches[0].clientY

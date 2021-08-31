@@ -7,7 +7,7 @@ import { ActionConsts } from "@Definitions"
 // #endregion Local Imports
 
 // #region Interface Imports
-import { IAppPage, IPayload } from "@Reducers"
+import { IAppPage } from "@Reducers"
 import { IAction } from "@Redux"
 import { Action } from "redux"
 // #endregion Interface Imports
@@ -22,12 +22,12 @@ export const AppActions = {
         type: ActionConsts.App.ResetReducer,
     }),
 
-    SetSelCate: (payload: IAppPage.Actions.IPayload): IAction<IPayload> => ({
+    SetSelCate: (payload: IAppPage.Actions.IPayload): IAction<IAppPage.Actions.IPayload> => ({
         payload: payload,
         type: ActionConsts.App.SetSelCateReducer,
     }),
 
-    SetSelNav: (payload: IAppPage.Actions.IPayload): IAction<IPayload> => ({
+    SetSelNav: (payload: IAppPage.Actions.IPayload): IAction<IAppPage.Actions.IPayload> => ({
         payload: payload,
         type: ActionConsts.App.SetSelNavReducer,
     }),

@@ -1,3 +1,4 @@
 export * from "./Button"
 export * from "./Title"
-export * from "./Atom.d"
+export * from "./Space"
+export * from "./TopBtn"

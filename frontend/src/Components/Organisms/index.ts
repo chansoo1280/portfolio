@@ -1,3 +1,6 @@
 export * from "./Nav"
 export * from "./MainView"
+export * from "./Work"
 export * from "./Footer"
+export * from "./Profile"
+export * from "./Contact"

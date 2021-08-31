@@ -6,11 +6,10 @@ import styles from "./Footer.module.scss"
 
 // #endregion Local Imports
 
-interface Props {
-    children?: React.ReactNode
-    centerTitle?: boolean
-}
-export const Footer = (props: Props): JSX.Element => {
+// interface Props {
+//     children?: React.ReactNode
+// }
+export const Footer = (): JSX.Element => {
     return (
         <>
             <footer className={styles["footer"]}>

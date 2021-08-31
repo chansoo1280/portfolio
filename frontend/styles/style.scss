@@ -2,9 +2,14 @@ body {
     /* Disables pull-to-refresh but allows overscroll glow effects. */
     overscroll-behavior-y: contain;
 }
-#__next,
-.l_wrap {
+#__next {
     overflow: hidden;
+    width: 100%;
+    height: 100%;
+}
+.l_wrap {
+    overflow-y: auto;
+    overflow-x: hidden;
     width: 100%;
     height: 100%;
 }

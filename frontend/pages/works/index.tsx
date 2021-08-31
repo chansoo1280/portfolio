@@ -3,11 +3,10 @@
 
 // #region Local Imports
 import { ReduxNextPageContext } from "@Interfaces"
-import { Nav, MainView, LayoutCode } from "@Components"
-import { useDispatch } from "react-redux"
+import { LayoutCode } from "@Components"
 import { useEffect } from "react"
 import { AppActions } from "@Actions"
-import { NavIdx, Title, ContentsWrapper } from "@Components"
+import { NavIdx, Title, ContentsWrapper, Work } from "@Components"
 import { useAppDispatch } from "@Redux"
 // #endregion Local Imports
 
@@ -24,6 +23,7 @@ const Page = (): JSX.Element => {
             <Title as="h2" center>
                 2021
             </Title>
+            <Work title="물가조회"></Work>
             <Title as="h2" center>
                 2020
             </Title>

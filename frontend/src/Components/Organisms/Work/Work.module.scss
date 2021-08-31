@@ -1,0 +1,10 @@
+.work {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 160px;
+    border: 1px solid;
+    &__title {
+        font-size: 20px;
+    }
+}
