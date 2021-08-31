@@ -66,7 +66,7 @@ class WebApp extends App<AppWithStore> {
                             perspective: "500px",
                         }}
                     >
-                        <CSSTransition appear={true} key={router.pathname} timeout={500} classNames={pageProps?.transition || ""}>
+                        <CSSTransition appear={true} key={router.pathname} timeout={400} classNames={pageProps?.transition || ""}>
                             <div className={"l_transition " + nextPathname + "From" + prevPathname}>
                                 <AppLayout {...pageProps}>
                                     <Component {...pageProps} />

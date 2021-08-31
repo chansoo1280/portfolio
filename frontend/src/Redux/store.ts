@@ -20,6 +20,11 @@ const bindMiddleware = (middleware: Middleware[]): StoreEnhancer => {
 
 const makeConfiguredStore = (reducer: any) => createStore(reducer, bindMiddleware([thunkMiddleware]))
 
+const persistConfig = {
+    key: "nextjs",
+    whitelist: ["app", "star"], // make sure it does not clash with server keys
+    storage,
+}
 const makeStore = (context?: Context) => {
     const isServer = typeof window === "undefined"
     if (isServer) {
@@ -27,18 +32,13 @@ const makeStore = (context?: Context) => {
     } else {
         // we need it only on client side
 
-        const persistConfig = {
-            key: "nextjs",
-            whitelist: ["app", "star"], // make sure it does not clash with server keys
-            storage,
-        }
-
         const persistedReducer = persistReducer(persistConfig, Reducers)
         return makeConfiguredStore(persistedReducer)
     }
 }
-const temp_store = makeStore()
-export type AppDispatch = typeof temp_store.dispatch
-export const persistor = persistStore(temp_store)
+const tempStore = createStore(Reducers)
+export type AppDispatch = typeof tempStore.dispatch
+
+export const persistor = persistStore(createStore(persistReducer(persistConfig, Reducers)))
 
 export const wrapper = createWrapper(makeStore, { debug: true })

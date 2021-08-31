@@ -8,10 +8,11 @@ import { useDispatch } from "react-redux"
 import { useEffect } from "react"
 import { AppActions } from "@Actions"
 import { NavIdx, Title, ContentsWrapper } from "@Components"
+import { useAppDispatch } from "@Redux"
 // #endregion Local Imports
 
 const Page = (): JSX.Element => {
-    const dispatch = useDispatch()
+    const dispatch = useAppDispatch()
     useEffect(() => {
         dispatch(AppActions.SetSelNav(NavIdx.WORKS))
     })

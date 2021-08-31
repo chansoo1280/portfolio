@@ -6,11 +6,11 @@ import { ReduxNextPageContext } from "@Interfaces"
 import { MainView } from "@Components"
 import { useEffect } from "react"
 import { AppActions } from "@Actions"
-import { useDispatch } from "react-redux"
+import { useAppDispatch } from "@Redux"
 // #endregion Local Imports
 
 const Page = (): JSX.Element => {
-    const dispatch = useDispatch()
+    const dispatch = useAppDispatch()
     useEffect(() => {
         dispatch(AppActions.SetSelNav(null))
     })

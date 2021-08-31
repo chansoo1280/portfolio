@@ -7,7 +7,9 @@ import { ActionConsts } from "@Definitions"
 // #endregion Local Imports
 
 // #region Interface Imports
-import { IAppPage } from "@Reducers"
+import { IAppPage, IPayload } from "@Reducers"
+import { IAction } from "@Redux"
+import { Action } from "redux"
 // #endregion Interface Imports
 
 export const AppActions = {
@@ -16,21 +18,17 @@ export const AppActions = {
     //     type: ActionConsts.App.SetReducer,
     // }),
 
-    Reset: () => ({
+    Reset: (): Action => ({
         type: ActionConsts.App.ResetReducer,
     }),
 
-    SetSelCate: (payload: IAppPage.Actions.IPayload) => async (dispatch: Dispatch) => {
-        dispatch({
-            payload: payload,
-            type: ActionConsts.App.SetSelCateReducer,
-        })
-    },
+    SetSelCate: (payload: IAppPage.Actions.IPayload): IAction<IPayload> => ({
+        payload: payload,
+        type: ActionConsts.App.SetSelCateReducer,
+    }),
 
-    SetSelNav: (payload: IAppPage.Actions.IPayload) => async (dispatch: Dispatch) => {
-        dispatch({
-            payload: payload,
-            type: ActionConsts.App.SetSelNavReducer,
-        })
-    },
+    SetSelNav: (payload: IAppPage.Actions.IPayload): IAction<IPayload> => ({
+        payload: payload,
+        type: ActionConsts.App.SetSelNavReducer,
+    }),
 }
