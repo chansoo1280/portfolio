@@ -5,14 +5,4 @@ export const ActionConsts = {
         SetSelThemeReducer: "App_SetSelThemeReducer",
         SetSelNavReducer: "App_SetSelNavReducer",
     },
-    Home: {
-        ResetReducer: "Home_ResetReducer",
-        SetReducer: "Home_SetReducer",
-    },
-    Star: {
-        ResetReducer: "Star_ResetReducer",
-        SetReducer: "Star_SetReducer",
-        AddReducer: "Star_AddReducer",
-        RemoveReducer: "Star_RemoveReducer",
-    },
 } as const

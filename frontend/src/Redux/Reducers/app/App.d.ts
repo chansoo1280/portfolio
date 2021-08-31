@@ -1,22 +1,14 @@
-import { NavIdx } from "@Components/Organisms/Nav/Nav"
-
 declare namespace IAppPage {
-    // export interface InitialProps {
-    //     namespacesRequired: string[]
-    // }
+    export type typeSel = number | null
 
     export interface IStateProps {
-        sel_cate: number | null
-        sel_theme: number | null
-        sel_nav: number | null
+        sel_cate: typeSel
+        sel_theme: typeSel
+        sel_nav: typeSel
     }
 
     namespace Actions {
-        export type IMapResponse = ISetSelCatePayload | ISetSelThemePayload
-
-        export type ISetSelCatePayload = number | null
-        export type ISetSelThemePayload = number | null
-        export type ISetSelNavPayload = number | null
+        export type IPayload = typeSel
     }
 }
 

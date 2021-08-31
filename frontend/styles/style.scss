@@ -1,3 +1,7 @@
+body {
+    /* Disables pull-to-refresh but allows overscroll glow effects. */
+    overscroll-behavior-y: contain;
+}
 #__next,
 .l_wrap {
     overflow: hidden;
@@ -21,15 +25,84 @@
     overflow: hidden;
 }
 
-.info-enter,
-.info-exit {
+$main: "\\/";
+$nav1: "\\/works";
+$nav2: "\\/resume";
+$nav3: "\\/contact";
+
+.#{$nav3}\/From#{$main}.info-enter,
+.#{$nav2}\/From#{$main}.info-enter,
+.#{$nav1}\/From#{$main}.info-enter {
     z-index: 9;
-    transition: all 0.3s ease-in-out;
+    transition: all 0.5s ease-out;
+    transform: translate3d(0, calc(100% - 40px), 0);
 }
-.info-enter,
-.info-exit-active {
-    transform: translate3d(0, calc(100% - 74px), 0);
-}
-.info-enter-active {
+.#{$nav3}\/From#{$main}.info-enter-active,
+.#{$nav2}\/From#{$main}.info-enter-active,
+.#{$nav1}\/From#{$main}.info-enter-active {
     transform: translate3d(0, 0, 0);
+}
+
+.#{$main}From#{$nav3}.info-exit,
+.#{$main}From#{$nav2}.info-exit,
+.#{$main}From#{$nav1}.info-exit {
+    z-index: 9;
+    transition: all 0.5s ease-out;
+    transform: translate3d(0, 0, 0);
+}
+.#{$main}From#{$nav3}.info-exit-active,
+.#{$main}From#{$nav2}.info-exit-active,
+.#{$main}From#{$nav1}.info-exit-active {
+    transform: translate3d(0, calc(100% - 40px), 0);
+}
+
+.#{$nav2}\/From#{$nav3}.info-enter,
+.#{$nav1}\/From#{$nav3}.info-enter,
+.#{$nav1}\/From#{$nav2}.info-enter {
+    z-index: 9;
+    transition: all 0.5s ease-out;
+    transform: translate3d(-100%, 0, 0);
+}
+.#{$nav2}\/From#{$nav3}.info-enter-active,
+.#{$nav1}\/From#{$nav3}.info-enter-active,
+.#{$nav1}\/From#{$nav2}.info-enter-active {
+    transform: translate3d(0, 0, 0);
+}
+.#{$nav3}\/From#{$nav2}.info-enter,
+.#{$nav3}\/From#{$nav1}.info-enter,
+.#{$nav2}\/From#{$nav1}.info-enter {
+    z-index: 9;
+    transition: all 0.5s ease-out;
+    transform: translate3d(100%, 0, 0);
+}
+.#{$nav3}\/From#{$nav2}.info-enter-active,
+.#{$nav3}\/From#{$nav1}.info-enter-active,
+.#{$nav2}\/From#{$nav1}.info-enter-active {
+    transform: translate3d(0, 0, 0);
+}
+
+.#{$nav2}\/From#{$nav3}.info-exit,
+.#{$nav1}\/From#{$nav3}.info-exit,
+.#{$nav1}\/From#{$nav2}.info-exit {
+    z-index: 9;
+    transition: all 0.5s ease-out;
+    transform: translate3d(0, 0, 0);
+}
+.#{$nav2}\/From#{$nav3}.info-exit-active,
+.#{$nav1}\/From#{$nav3}.info-exit-active,
+.#{$nav1}\/From#{$nav2}.info-exit-active {
+    transform: translate3d(100%, 0, 0);
+}
+
+.#{$nav3}\/From#{$nav2}.info-exit,
+.#{$nav3}\/From#{$nav1}.info-exit,
+.#{$nav2}\/From#{$nav1}.info-exit {
+    z-index: 9;
+    transition: all 0.5s ease-out;
+    transform: translate3d(0, 0, 0);
+}
+.#{$nav3}\/From#{$nav2}.info-exit-active,
+.#{$nav3}\/From#{$nav1}.info-exit-active,
+.#{$nav2}\/From#{$nav1}.info-exit-active {
+    transform: translate3d(-100%, 0, 0);
 }

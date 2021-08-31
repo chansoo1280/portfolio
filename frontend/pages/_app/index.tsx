@@ -26,6 +26,7 @@ class WebApp extends App<AppWithStore> {
         super(props)
         this.state = {
             nextPathname: this.props.router.pathname,
+            prevPathname: this.props.router.pathname,
         }
     }
     static async getInitialProps({ Component, ctx }: AppContext): Promise<AppInitialProps> {
@@ -37,6 +38,7 @@ class WebApp extends App<AppWithStore> {
         this.setState({
             ...this.state,
             nextPathname: url.split("?")[0],
+            prevPathname: this.props.router.pathname,
         })
     }
     componentDidMount() {
@@ -47,7 +49,7 @@ class WebApp extends App<AppWithStore> {
     }
     render() {
         const { Component, pageProps, router, sel_theme, sel_nav }: any = this.props
-        const { nextPathname }: any = this.state
+        const { nextPathname, prevPathname }: any = this.state
         const AppLayout = TheLayout[pageProps?.layout || LayoutCode.Default]
         return (
             <ThemeProvider theme={ThemeObj[ThemeType[sel_theme] || ThemeType.WHITE]}>
@@ -63,8 +65,8 @@ class WebApp extends App<AppWithStore> {
                             perspective: "500px",
                         }}
                     >
-                        <CSSTransition appear={true} key={router.pathname} timeout={10000} classNames={pageProps?.transition || ""}>
-                            <div className={"l_transition " + nextPathname + "<-" + router.pathname}>
+                        <CSSTransition appear={true} key={router.pathname} timeout={500} classNames={pageProps?.transition || ""}>
+                            <div className={"l_transition " + nextPathname + "From" + prevPathname}>
                                 <AppLayout {...pageProps}>
                                     <Component {...pageProps} />
                                 </AppLayout>

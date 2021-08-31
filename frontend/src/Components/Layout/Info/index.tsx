@@ -5,12 +5,12 @@ import className from "classnames"
 
 // #region Local Imports
 // import { StyledWrap } from "./styled"
-import styles from "./Default.module.scss"
+import styles from "./Info.module.scss"
 import { ILayout } from "../Layout"
 // #endregion Local Imports
 
-export const Default = ({ children }: ILayout.IProps): JSX.Element => {
-    const classes = className("l_wrap", styles["l_wrap--default"])
+export const Info = ({ children }: ILayout.IProps): JSX.Element => {
+    const classes = className("l_wrap", styles["l_wrap--info"])
     return (
         <>
             <Head>

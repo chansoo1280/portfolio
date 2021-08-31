@@ -1,5 +1,6 @@
 declare module "redux-persist/integration/react"
 declare module "react-c3js"
+declare module "classnames"
 
 declare namespace Process {
     interface ProcessEnv {

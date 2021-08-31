@@ -20,14 +20,14 @@ export const AppActions = {
         type: ActionConsts.App.ResetReducer,
     }),
 
-    SetSelCate: (payload: IAppPage.Actions.ISetSelCatePayload) => async (dispatch: Dispatch) => {
+    SetSelCate: (payload: IAppPage.Actions.IPayload) => async (dispatch: Dispatch) => {
         dispatch({
             payload: payload,
             type: ActionConsts.App.SetSelCateReducer,
         })
     },
 
-    SetSelNav: (payload: IAppPage.Actions.ISetSelNavPayload) => async (dispatch: Dispatch) => {
+    SetSelNav: (payload: IAppPage.Actions.IPayload) => async (dispatch: Dispatch) => {
         dispatch({
             payload: payload,
             type: ActionConsts.App.SetSelNavReducer,

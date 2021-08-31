@@ -2,6 +2,14 @@
 import { DefaultTheme } from "styled-components"
 // #endregion Global Imports
 
+declare module "styled-components" {
+    export interface DefaultTheme {
+        colors: {
+            primary: string
+        }
+    }
+}
+
 export const ThemeType: { [x: string]: number } = {
     WHITE: 0,
     DARK: 1,

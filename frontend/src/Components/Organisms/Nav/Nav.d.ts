@@ -1,7 +1,8 @@
+import { Ref } from "react"
+
 declare namespace INav {
     export interface IProps {
         children?: React.ReactNode
-        centerTitle?: boolean
         selIdx: null
     }
 }

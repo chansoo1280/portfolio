@@ -26,6 +26,7 @@ const Page = (): JSX.Element => {
 }
 Page.getInitialProps = async (ctx: ReduxNextPageContext) => {
     return {
+        layout: LayoutCode.Info,
         transition: "info",
     }
 }

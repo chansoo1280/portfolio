@@ -2,7 +2,7 @@
 import { createStore, applyMiddleware, Middleware, StoreEnhancer } from "redux"
 import thunkMiddleware from "redux-thunk"
 import { composeWithDevTools } from "redux-devtools-extension"
-import { createWrapper } from "next-redux-wrapper"
+import { Context, createWrapper } from "next-redux-wrapper"
 import { persistReducer, persistStore } from "redux-persist"
 import storage from "redux-persist/lib/storage"
 // #endregion Global Imports
@@ -20,7 +20,7 @@ const bindMiddleware = (middleware: Middleware[]): StoreEnhancer => {
 
 const makeConfiguredStore = (reducer: any) => createStore(reducer, bindMiddleware([thunkMiddleware]))
 
-const makeStore = () => {
+const makeStore = (context?: Context) => {
     const isServer = typeof window === "undefined"
     if (isServer) {
         return makeConfiguredStore(Reducers)
@@ -34,8 +34,7 @@ const makeStore = () => {
         }
 
         const persistedReducer = persistReducer(persistConfig, Reducers)
-        const store = makeConfiguredStore(persistedReducer)
-        return store
+        return makeConfiguredStore(persistedReducer)
     }
 }
 const temp_store = makeStore()
