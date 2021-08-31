@@ -14,7 +14,6 @@ const Page = (): JSX.Element => {
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(AppActions.SetSelNav(NavIdx.WORKS))
-        return () => {}
     })
     return (
         <>

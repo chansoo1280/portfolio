@@ -5,6 +5,7 @@ import className from "classnames"
 
 // #region Local Imports
 // import { StyledWrap } from "./styled"
+import { Footer } from "@Components"
 import styles from "./Info.module.scss"
 import { ILayout } from "../Layout"
 // #endregion Local Imports
@@ -19,7 +20,10 @@ export const Info = ({ children }: ILayout.IProps): JSX.Element => {
                 <link rel="icon" href="/favicon.ico" />
                 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css"></link>
             </Head>
-            <div className={classes}>{children}</div>
+            <div className={classes}>
+                {children}
+                <Footer />
+            </div>
         </>
     )
 }
