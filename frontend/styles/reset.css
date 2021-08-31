@@ -50,7 +50,6 @@ body {
    -webkit-text-size-adjust: none;
    word-wrap: break-word;
    word-break: break-all;
-   line-height: 16px;
 }
 
 ol, ul {
@@ -123,8 +122,8 @@ textarea {
  
  /* 전체 폰트 설정 */
  body, input, select, textarea, button {
-    font-size: 12px;
-    font-family: 'NotoKR', sans-serif;
+    font-size: 16px;
+    font-family: 'Noto Sans KR', sans-serif;
  }
  
  br {

@@ -4,12 +4,37 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 10px;
+    gap: 20px;
     &__img {
         height: 188px;
     }
-    &__title {
-        font-size: 32px;
-        font-weight: 700;
+    &__domain {
+        margin-bottom: 40px;
+    }
+    &__btn--resume {
+        padding: 10px 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        height: 54px;
+        background: rgb(46, 204, 113);
+        border: none;
+        border-radius: 4px;
+        color: #fff;
+        font-size: 18px;
+        animation: floating 2s infinite;
+    }
+    @keyframes floating {
+        0% {
+            transform: translate3d(0, -20%, 0);
+        }
+        50% {
+            transform: translate3d(0, 20%, 0);
+        }
+        100% {
+            transform: translate3d(0, -20%, 0);
+        }
     }
 }

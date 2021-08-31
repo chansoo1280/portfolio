@@ -1,5 +1,6 @@
 // #region Global Imports
 import "swiper/swiper.scss"
+import "@Static/css/fonts.css"
 import "/styles/reset.css"
 import "/styles/style.scss"
 

@@ -7,7 +7,7 @@ import { Nav, MainView, LayoutCode } from "@Components"
 import { useDispatch } from "react-redux"
 import { useEffect } from "react"
 import { AppActions } from "@Actions"
-import { NavIdx } from "@Components"
+import { NavIdx, ContentsWrapper, Title } from "@Components"
 // #endregion Local Imports
 
 const Page = (): JSX.Element => {
@@ -16,11 +16,14 @@ const Page = (): JSX.Element => {
         dispatch(AppActions.SetSelNav(NavIdx.CONTACT))
     })
     return (
-        <>
-            <div>
-                <h1>contact</h1>
-            </div>
-        </>
+        <ContentsWrapper>
+            <Title as="h1" ir>
+                contact
+            </Title>
+            <Title as="span" center>
+                Thank you for visiting!
+            </Title>
+        </ContentsWrapper>
     )
 }
 Page.getInitialProps = async (ctx: ReduxNextPageContext) => {
