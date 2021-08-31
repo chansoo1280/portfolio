@@ -9,7 +9,6 @@ COPY . .
 WORKDIR /app/frontend
 RUN npm install
 RUN npm run build
-RUN npm run generate
 
 # Step 2
 ## base image for Step 2: Node 10-alpine(light weight)
