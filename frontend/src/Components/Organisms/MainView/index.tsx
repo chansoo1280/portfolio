@@ -3,12 +3,13 @@ import Link from "next/link"
 // #endregion Global Imports
 
 // #region Local Imports
-import { IMainView } from "./MainView"
 import styles from "./MainView.module.scss"
 import { Title } from "@Components"
 // #endregion Local Imports
-
-export const MainView = (props: IMainView.IProps): JSX.Element => {
+interface Props {
+    children?: React.ReactNode
+}
+export const MainView = (props: Props): JSX.Element => {
     return (
         <>
             <div className={styles["main-view"]} {...props}>

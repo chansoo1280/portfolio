@@ -25,17 +25,6 @@ export const Contact = (): JSX.Element => {
                     </dl>
                 </li>
                 <li className={styles["contact__item"]}>
-                    <i className={className("xi-mobile", styles["contact__icon"])}></i>
-                    <dl className={styles["contact__info"]}>
-                        <dt className="ir">전화번호</dt>
-                        <dd>
-                            <a className={styles["contact__text"]} href="tel:010-3726-1280">
-                                010-3726-1280
-                            </a>
-                        </dd>
-                    </dl>
-                </li>
-                <li className={styles["contact__item"]}>
                     <i className={className("xi-maker", styles["contact__icon"])}></i>
                     <dl className={styles["contact__info"]}>
                         <dt className="ir">위치</dt>
