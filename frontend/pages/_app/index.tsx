@@ -26,6 +26,7 @@ class WebApp extends App<AppWithStore> {
     constructor(props: any) {
         super(props)
         this.state = {
+            refContainer: React.createRef(),
             nextPathname: this.props.router.pathname,
             prevPathname: this.props.router.pathname,
         }
@@ -50,12 +51,12 @@ class WebApp extends App<AppWithStore> {
     }
     render() {
         const { Component, pageProps, router, sel_theme, sel_nav }: any = this.props
-        const { nextPathname, prevPathname }: any = this.state
+        const { nextPathname, prevPathname, refContainer }: any = this.state
         const AppLayout = TheLayout[pageProps?.layout || LayoutCode.Default]
         return (
             <ThemeProvider theme={ThemeObj[ThemeType[sel_theme] || ThemeType.WHITE]}>
                 <PersistGate persistor={persistor} loading={<div>Loading</div>}>
-                    <Nav selIdx={sel_nav || null} />
+                    <Nav refContainer={refContainer} selIdx={sel_nav || null} />
                     <TransitionGroup
                         id="__TRANSITION"
                         style={{
@@ -67,7 +68,7 @@ class WebApp extends App<AppWithStore> {
                     >
                         <CSSTransition appear={true} key={router.pathname} timeout={400} classNames={pageProps?.transition || ""}>
                             <div className={"l_transition " + nextPathname + "From" + prevPathname}>
-                                <AppLayout {...pageProps}>
+                                <AppLayout refContainer={refContainer} ref={refContainer} {...pageProps}>
                                     <Component {...pageProps} />
                                 </AppLayout>
                             </div>

@@ -15,7 +15,7 @@ interface Props {
 }
 
 const Title: React.FunctionComponent<Props> = (props) => {
-    const { as, ir, border, center } = props
+    const { as, ir, border, center, ...rest } = props
     const classes = classNames({
         [styles["title"]]: true,
         [styles[`title--${as}`]]: true,
@@ -25,28 +25,28 @@ const Title: React.FunctionComponent<Props> = (props) => {
     })
     switch (as) {
         case "h1": {
-            return <h1 className={classes} {...props} />
+            return <h1 className={classes} {...rest} />
         }
         case "h2": {
-            return <h2 className={classes} {...props} />
+            return <h2 className={classes} {...rest} />
         }
         case "h3": {
-            return <h3 className={classes} {...props} />
+            return <h3 className={classes} {...rest} />
         }
         case "h4": {
-            return <h4 className={classes} {...props} />
+            return <h4 className={classes} {...rest} />
         }
         case "h5": {
-            return <h5 className={classes} {...props} />
+            return <h5 className={classes} {...rest} />
         }
         case "h6": {
-            return <h6 className={classes} {...props} />
+            return <h6 className={classes} {...rest} />
         }
         case "span": {
-            return <span className={classes} {...props} />
+            return <span className={classes} {...rest} />
         }
         default: {
-            return <h1 className={classes} {...props} />
+            return <h1 className={classes} {...rest} />
         }
     }
 }

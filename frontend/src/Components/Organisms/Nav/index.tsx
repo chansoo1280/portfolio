@@ -14,7 +14,7 @@ export { NavIdx }
 
 export const Nav = (props: INav.IProps): JSX.Element => {
     const router = useRouter()
-    const { selIdx } = props
+    const { selIdx, refContainer } = props
 
     const classes = classNames({
         [styles["nav"]]: true,
@@ -66,6 +66,14 @@ export const Nav = (props: INav.IProps): JSX.Element => {
                     }
                 }
             } else {
+                if (refContainer.current) {
+                    if (refContainer.current.scrollTop !== 0) {
+                        touchObj.startTime = null
+                        touchObj.x = null
+                        touchObj.y = null
+                        return
+                    }
+                }
                 if (50 < yDiff) {
                     console.log("yDiff down")
                     /* right swipe */
@@ -86,8 +94,8 @@ export const Nav = (props: INav.IProps): JSX.Element => {
         touchObj.y = null
     }
     useEffect(() => {
-        document.addEventListener("touchstart", handleTouchStart, false)
-        document.addEventListener("touchend", handleTouchEnd, false)
+        document.addEventListener("touchstart", handleTouchStart)
+        document.addEventListener("touchend", handleTouchEnd)
         return () => {
             document.removeEventListener("touchstart", handleTouchStart)
             document.removeEventListener("touchend", handleTouchEnd)

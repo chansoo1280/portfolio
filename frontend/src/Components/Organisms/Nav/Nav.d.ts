@@ -1,7 +1,10 @@
+import { Ref } from "react"
+
 declare namespace INav {
     export interface IProps {
         children?: React.ReactNode
         selIdx: null
+        refContainer?: Ref
     }
 }
 export const NavIdx = {

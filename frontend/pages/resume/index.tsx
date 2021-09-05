@@ -6,7 +6,7 @@ import { ReduxNextPageContext } from "@Interfaces"
 import { LayoutCode } from "@Components"
 import { useEffect } from "react"
 import { AppActions } from "@Actions"
-import { NavIdx, Title, Profile, ContentsWrapper } from "@Components"
+import { NavIdx, Title, Profile, Skills, ContentsWrapper } from "@Components"
 import { useAppDispatch } from "@Redux"
 // #endregion Local Imports
 
@@ -28,6 +28,7 @@ const Page = (): JSX.Element => {
                 <Title as="h2" border>
                     Skills
                 </Title>
+                <Skills />
                 <Title as="h2" border>
                     Work Experience
                 </Title>

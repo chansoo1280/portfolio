@@ -15,7 +15,6 @@ interface Props {
 const TopBtn: React.FunctionComponent<Props> = (props) => {
     const { container } = props
     const [scrollTop, setScrollTop] = useState(0)
-    console.log(container.current)
     useEffect(() => {
         const el = container.current
         if (el === null) return

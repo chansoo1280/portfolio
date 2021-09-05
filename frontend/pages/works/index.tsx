@@ -23,10 +23,11 @@ const Page = (): JSX.Element => {
             <Title as="h2" center>
                 2021
             </Title>
-            <Work title="물가조회"></Work>
+            <Work title="준비중입니다..."></Work>
             <Title as="h2" center>
                 2020
             </Title>
+            <Work title="준비중입니다..."></Work>
         </ContentsWrapper>
     )
 }

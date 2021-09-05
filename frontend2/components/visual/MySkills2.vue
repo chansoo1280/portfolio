@@ -121,7 +121,7 @@ export default Vue.extend({
   },
   mounted() {
     // standard global variables
-    let scene, camera, renderer, controls
+    let camera, renderer, controls
 
     // custom global variables
 
@@ -130,12 +130,12 @@ export default Vue.extend({
     // FUNCTIONS
     function init() {
       // SCENE
-      scene = new THREE.Scene()
+      this.scene = new THREE.Scene()
       {
         const near = 15
         const far = 40
         const color = 'white'
-        scene.fog = new THREE.Fog(color, near, far)
+        this.scene.fog = new THREE.Fog(color, near, far)
       }
       // CAMERA
       const SCREEN_WIDTH = window.innerWidth * 0.4
@@ -147,8 +147,8 @@ export default Vue.extend({
       camera = new THREE.PerspectiveCamera(VIEW_ANGLE, ASPECT, NEAR, FAR)
       // window.camera = camera
       camera.position.set(0, 0, 25)
-      camera.lookAt(scene.position)
-      scene.add(camera)
+      camera.lookAt(this.scene.position)
+      this.scene.add(camera)
 
       this.raycaster = new THREE.Raycaster()
       this.mouse = new THREE.Vector2()
@@ -208,7 +208,7 @@ export default Vue.extend({
 
       const group = new THREE.Group()
       this.group = group
-      scene.add(group)
+      this.scene.add(group)
 
       let geometry = new THREE.IcosahedronGeometry(8)
       geometry.deleteAttribute('normal')
@@ -223,7 +223,7 @@ export default Vue.extend({
       })
       const mesh = new THREE.Mesh(geometry, material)
       mesh.position.set(0, 0, 0)
-      scene.add(mesh)
+      this.scene.add(mesh)
       {
         const positionAttribute = mesh.geometry.getAttribute('position')
         for (let i = 0; i < positionAttribute.count; i++) {
@@ -394,7 +394,7 @@ export default Vue.extend({
         vertices[i].texture.needsUpdate = true
       }
 
-      renderer.render(scene, camera)
+      renderer.render(this.scene, camera)
     }
   },
   beforeDestroy() {
