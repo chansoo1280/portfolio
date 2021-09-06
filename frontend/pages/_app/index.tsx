@@ -66,7 +66,15 @@ class WebApp extends App<AppWithStore> {
                             height: "100%",
                         }}
                     >
-                        <CSSTransition appear={true} key={router.pathname} timeout={400} classNames={pageProps?.transition || ""}>
+                        <CSSTransition
+                            appear={true}
+                            key={router.pathname}
+                            timeout={{
+                                enter: 400,
+                                exit: 390,
+                            }}
+                            classNames={pageProps?.transition || ""}
+                        >
                             <div className={"l_transition " + nextPathname + "From" + prevPathname}>
                                 <AppLayout refContainer={refContainer} ref={refContainer} {...pageProps}>
                                     <Component {...pageProps} />

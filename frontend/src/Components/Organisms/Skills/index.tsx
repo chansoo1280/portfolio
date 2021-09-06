@@ -29,7 +29,7 @@ const useCanvasStatus = (skills: any) => {
     let renderer: any = null
     const group = new THREE.Group()
     const raycaster = new THREE.Raycaster()
-    const mouse = new THREE.Vector2(-99, -99)
+    const mouse = new THREE.Vector2(-1, -1)
     let animationFrame: any = null
     const makeTextSprite = (c: HTMLCanvasElement, message: any, parameters: any) => {
         if (parameters === undefined) parameters = {}
@@ -97,7 +97,7 @@ const useCanvasStatus = (skills: any) => {
         const ASPECT = SCREEN_WIDTH / SCREEN_HEIGHT
         const NEAR = 0.1
         const FAR = 20000
-        camera = new THREE.PerspectiveCamera(VIEW_ANGLE, ASPECT, NEAR, FAR)
+        camera = new THREE.PerspectiveCamera(VIEW_ANGLE, ASPECT, NEAR, FAR) as THREE.PerspectiveCamera
         // window.camera = camera
         camera.position.set(0, 0, 30)
         camera.lookAt(scene.position)
@@ -133,6 +133,8 @@ const useCanvasStatus = (skills: any) => {
                     controlsObj.sel_idx = null
                     controlsObj.isSelected = false
                     setDesc(null)
+                    mouse.x = -1
+                    mouse.y = -1
                 } else {
                     setPos(idx)
                     controls.enabled = false
@@ -167,11 +169,11 @@ const useCanvasStatus = (skills: any) => {
 
         scene.add(group)
 
-        let geometry: any = new THREE.IcosahedronGeometry(8)
+        let geometry: THREE.IcosahedronGeometry = new THREE.IcosahedronGeometry(8)
         geometry.deleteAttribute("normal")
         geometry.deleteAttribute("uv")
 
-        geometry = mergeVertices(geometry)
+        geometry = mergeVertices(geometry) as THREE.IcosahedronGeometry
         const material = new THREE.MeshPhongMaterial({
             color: "#000000",
             opacity: 0,

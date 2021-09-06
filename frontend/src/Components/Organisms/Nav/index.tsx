@@ -37,6 +37,7 @@ export const Nav = (props: INav.IProps): JSX.Element => {
     }
 
     const handleTouchEnd = (e: TouchEvent) => {
+        if (e.target && (e.target as any).localName === "canvas") return false
         const endTime = e.timeStamp
         const endX = e.changedTouches[0].clientX
         const endY = e.changedTouches[0].clientY
