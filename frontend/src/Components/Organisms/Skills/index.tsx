@@ -2,6 +2,7 @@
 import React, { ReactNode, useEffect, useRef, useState } from "react"
 import * as THREE from "three"
 import { OrbitControls, mergeVertices } from "@Services"
+import classNames from "classnames"
 // #endregion Global Imports
 
 // #region Local Imports
@@ -16,8 +17,13 @@ interface spriteType extends THREE.Sprite {
     texture: THREE.Texture
     idx: number
 }
-const useCanvasStatus = (skills: any) => {
-    const [desc, setDesc] = useState(null)
+interface Skill {
+    idx: number
+    name: string
+    con: string
+}
+const useCanvasStatus = (skills: Skill[]) => {
+    const [desc, setDesc] = useState<Skill | null>(null)
     const controlsObj: any = {
         enabled: true,
         isSelected: false,
@@ -40,13 +46,13 @@ const useCanvasStatus = (skills: any) => {
         const canvas = document.createElement("canvas")
 
         const context = canvas.getContext("2d") as contextType
-        context.font = "Bold " + fontsize + "px " + fontface
+        context.font = "400 " + fontsize + "px " + fontface
         // get size data (height depends only on font size)
         const metrics = context.measureText(message)
-        const textWidth = metrics.width
+        const textWidth = metrics.width * 1.2
         canvas.width = textWidth
         canvas.height = fontsize
-        context.font = "Bold " + fontsize + "px " + fontface
+        context.font = "400 " + fontsize + "px " + fontface
         context.lineWidth = 0
         // text color
         context.textAlign = "center"
@@ -290,14 +296,11 @@ const useCanvasStatus = (skills: any) => {
         }
     }, [])
     return {
-        bulrLabels,
-        controls,
         desc,
         init: (c: any) => {
             init(c)
             animate()
         },
-        animationFrame: animationFrame,
     }
 }
 
@@ -309,71 +312,84 @@ const Skills: React.FunctionComponent<Props> = (props) => {
     const skills = [
         {
             idx: 0,
-            name: "Vue.js",
-            title: '"가장 많이 쓴 모던프레임워크"',
-            con: "",
+            name: "TypeScript",
+            con: "A Typed Superset of JavaScript",
         },
         {
             idx: 1,
-            name: "HTML",
-            title: '"웹표준과 접근성을 준수한 마크업"',
-            con: "",
+            name: "AWS",
+            con: "애용중인 클라우드 컴퓨팅 서비스",
         },
         {
             idx: 2,
-            name: "CSS",
-            title: '"가장 많이 쓴 모던프레임워크"',
-            con: "설명설명 ",
+            name: "Vue.js",
+            con: "The Progressive JavaScript Framework",
         },
         {
             idx: 3,
-            name: "react.js",
-            title: '"가장 많이 쓴 모던프레임워크"',
-            con: "설명설명 ",
+            name: "React",
+            con: "My Favorite JavaScript Framework",
         },
         {
             idx: 4,
             name: "RN",
-            title: '"가장 많이 쓴 모던프레임워크"',
-            con: "설명설명 ",
+            con: "Build Mobile Apps!",
         },
         {
             idx: 5,
-            name: "THREE.js",
+            name: " THREE.js",
+            con: "JavaScript 3D Library",
         },
         {
             idx: 6,
-            name: "node.js",
+            name: "Next.js",
+            con: "The React Framework for Production",
         },
         {
             idx: 7,
-            name: "c3.js",
+            name: "HTML/CSS",
+            con: "Basics of FE Development",
         },
         {
             idx: 8,
             name: "Github",
+            con: "Automated Testing & Deployment",
         },
         {
             idx: 9,
-            name: "nuxt.js",
+            name: "Docker",
+            con: "Empowering App Development",
         },
         {
             idx: 10,
-            name: "next.js",
+            name: "Node.js",
+            con: "Javascript Runtime",
         },
         {
             idx: 11,
-            name: "nest.js",
+            name: "NestJS",
+            con: "A Progressive Node.js Framework",
         },
     ]
-    const { bulrLabels, controls, desc, init, animationFrame } = useCanvasStatus(skills)
+    const { desc, init } = useCanvasStatus(skills)
     const {} = props
+    const [con, setCon] = useState<string | null>(null)
     useEffect(() => {
         init(canvas.current)
     }, [])
+    useEffect(() => {
+        if (desc) setCon(desc.con)
+    }, [desc])
     return (
         <div className={styles["skills"]}>
             <canvas ref={canvas}></canvas>
+            <span
+                className={classNames(styles["skills__contents"], {
+                    [styles["skills__contents--show"]]: desc,
+                })}
+            >
+                {con}
+            </span>
         </div>
     )
 }

@@ -1,3 +1,5 @@
+@import "../../mixin";
+
 .main-view {
     flex: 1;
     display: flex;
@@ -7,6 +9,7 @@
     gap: 20px;
     &__img {
         height: 188px;
+        margin-bottom: 20px;
     }
     &__domain {
         margin-bottom: 40px;

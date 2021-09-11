@@ -13,9 +13,7 @@ export const MainView = (props: Props): JSX.Element => {
     return (
         <>
             <div className={styles["main-view"]} {...props}>
-                <div className={styles["main-view__img"]}>
-                    <img src="" alt="" />
-                </div>
+                <img className={styles["main-view__img"]} src="/static/images/profile.jpg" alt="" />
                 <Title as="h1">ChanSoo Kim</Title>
                 <span className={styles["main-view__domain"]}>chansoo1280.site</span>
                 <Link href="/resume">
