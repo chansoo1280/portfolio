@@ -30,8 +30,6 @@ node {
         }
         withCredentials([gitUsernamePassword(credentialsId: 'git-chansoo1280', gitToolName: 'git-tool')]) {
             sh '''
-                // git config user.name 'chansoo1280'
-                // git config user.email 'chansoo1280@naver.com'
                 git add .
                 git commit -m \"CODE BUILD\"
                 git push origin master
