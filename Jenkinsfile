@@ -12,7 +12,7 @@ node {
             sh 'docker ps'
         }
         sh 'dir'
-        git url: 'https://github.com/chansoo1280/gitops.git', credentialsId: 'git-chansoo1280'
+        git url: 'https://github.com/chansoo1280/devops.git', credentialsId: 'git-chansoo1280'
         sh 'dir'
     }
 
