@@ -1,7 +1,9 @@
 node {
-    stage 'Pull'
-    sh 'dir'
-    sh 'echo ${env.BUILD_NUMBER}'
+    stage ('Pull'){
+        sh 'dir'
+        sh "printenv"
+        echo '${env.BUILD_NUMBER}'
+    }
     // git url: 'https://github.com/chansoo1280/portfolio.git', credentialsId: 'git-chansoo1280'
     // stage 'init'
     // withAWS(credentials: 'aws-chansoo1280', region: 'ap-northeast-2') {
