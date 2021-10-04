@@ -22,5 +22,5 @@ node {
         sh 'dir'
         sh "kustomize edit set image \"633540653248.dkr.ecr.ap-northeast-2.amazonaws.com/portfolio=633540653248.dkr.ecr.ap-northeast-2.amazonaws.com/portfolio:${env.BUILD_NUMBER}\""
         sh "cat argo/my-apps/portfolio/base/kustomization.yaml"
-    ]
+    }
 }
