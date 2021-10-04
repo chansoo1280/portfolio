@@ -21,9 +21,11 @@ node {
         '''
         git url: 'https://github.com/chansoo1280/devops.git', credentialsId: 'git-chansoo1280'
         sh 'dir'
-        sh 'cd argo/my-apps/portfolio/base'
-        sh 'dir'
-        sh "kustomize edit set image \"633540653248.dkr.ecr.ap-northeast-2.amazonaws.com/portfolio=633540653248.dkr.ecr.ap-northeast-2.amazonaws.com/portfolio:${env.BUILD_NUMBER}\""
-        sh "cat kustomization.yaml"
+        dir('argo/my-apps/portfolio/base') {
+            sh "pwd"
+            sh 'dir'
+            sh "kustomize edit set image \"633540653248.dkr.ecr.ap-northeast-2.amazonaws.com/portfolio=633540653248.dkr.ecr.ap-northeast-2.amazonaws.com/portfolio:${env.BUILD_NUMBER}\""
+            sh "cat kustomization.yaml"
+        }
     }
 }
