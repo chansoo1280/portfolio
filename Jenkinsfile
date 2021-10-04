@@ -28,10 +28,10 @@ node {
             sh "kustomize edit set image \"${AWS_ECR}=${AWS_ECR}:${env.BUILD_NUMBER}\""
             sh "cat kustomization.yaml"
         }
-        sshagent(['git-chansoo1280']) {
+        withCredentials([gitUsernamePassword(credentialsId: 'git-chansoo1280', gitToolName: 'git-tool')]) {
             sh '''
-                git config user.name 'chansoo1280'
-                git config user.email 'chansoo1280@naver.com'
+                // git config user.name 'chansoo1280'
+                // git config user.email 'chansoo1280@naver.com'
                 git add .
                 git commit -m \"CODE BUILD\"
                 git push origin master
