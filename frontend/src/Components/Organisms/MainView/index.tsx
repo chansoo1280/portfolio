@@ -18,7 +18,7 @@ export const MainView = (props: Props): JSX.Element => {
                 <span className={styles["main-view__domain"]}>chansoo1280.site</span>
                 <Link href="/resume">
                     <a className={styles["main-view__btn--resume"]}>
-                        Check my resume!
+                        Check My Resume!
                         <i className="xi-angle-down-min"></i>
                     </a>
                 </Link>
