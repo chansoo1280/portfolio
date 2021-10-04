@@ -1,7 +1,5 @@
+def AWS_ECR = "633540653248.dkr.ecr.ap-northeast-2.amazonaws.com/portfolio"
 node {
-    environment {
-        AWS_ECR = "633540653248.dkr.ecr.ap-northeast-2.amazonaws.com/portfolio"
-    }
     stage ('Pull'){
         sh 'dir'
         git url: 'https://github.com/chansoo1280/portfolio.git', credentialsId: 'git-chansoo1280'
