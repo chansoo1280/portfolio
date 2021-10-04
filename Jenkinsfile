@@ -28,10 +28,12 @@ node {
             sh "kustomize edit set image \"${AWS_ECR}=${AWS_ECR}:${env.BUILD_NUMBER}\""
             sh "cat kustomization.yaml"
         }
-        sh '''
-            git add .
-            git commit -m \"CODE BUILD\"
-            git push origin master
-        '''
+        sshagent(['git-chansoo1280']) {
+            sh '''
+                git add .
+                git commit -m \"CODE BUILD\"
+                git push origin master
+            '''
+        }
     }
 }
