@@ -1,18 +1,18 @@
 def AWS_ECR = "633540653248.dkr.ecr.ap-northeast-2.amazonaws.com/portfolio"
 node {
-    // stage ('Pull'){
-    //     sh 'dir'
-    //     git url: 'https://github.com/chansoo1280/portfolio.git', credentialsId: 'git-chansoo1280'
-    // }
-    // stage ('build'){
-    //     withAWS(credentials: 'aws-chansoo1280', region: 'ap-northeast-2') {
-    //         sh(script: 'aws ecr get-login-password --region ap-northeast-2 | docker login --username AWS --password-stdin 633540653248.dkr.ecr.ap-northeast-2.amazonaws.com')
-    //         sh 'docker build -t portfolio .'
-    //         sh "docker tag portfolio:latest ${AWS_ECR}:${env.BUILD_NUMBER}"
-    //         sh "docker push ${AWS_ECR}:${env.BUILD_NUMBER}"
-    //         sh 'docker ps'
-    //     }
-    // }
+    stage ('Pull'){
+        sh 'dir'
+        git url: 'https://github.com/chansoo1280/portfolio.git', credentialsId: 'git-chansoo1280'
+    }
+    stage ('build'){
+        withAWS(credentials: 'aws-chansoo1280', region: 'ap-northeast-2') {
+            sh(script: 'aws ecr get-login-password --region ap-northeast-2 | docker login --username AWS --password-stdin 633540653248.dkr.ecr.ap-northeast-2.amazonaws.com')
+            sh 'docker build -t portfolio .'
+            sh "docker tag portfolio:latest ${AWS_ECR}:${env.BUILD_NUMBER}"
+            sh "docker push ${AWS_ECR}:${env.BUILD_NUMBER}"
+            sh 'docker ps'
+        }
+    }
     stage ('gitops'){
         sh 'dir'
         sh '''#!/bin/bash
@@ -29,11 +29,11 @@ node {
             sh "cat kustomization.yaml"
         }
         withCredentials([gitUsernamePassword(credentialsId: 'git-chansoo1280', gitToolName: 'git-tool')]) {
-            sh '''
+            sh """
                 git add .
-                git commit -m \"CODE BUILD\"
+                git commit -m \"CODE BUILD : ${env.BUILD_NUMBER}\"
                 git push origin master
-            '''
+            """
         }
     }
 }
