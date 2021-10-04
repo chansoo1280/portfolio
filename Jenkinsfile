@@ -30,6 +30,8 @@ node {
         }
         sshagent(['git-chansoo1280']) {
             sh '''
+                git config user.name 'chansoo1280'
+                git config user.email 'chansoo1280@naver.com'
                 git add .
                 git commit -m \"CODE BUILD\"
                 git push origin master
