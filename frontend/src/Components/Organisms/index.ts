@@ -1,5 +1,6 @@
 export * from "./Nav"
 export { default as Skills } from "./Skills"
+export { default as Privacy } from "./Privacy"
 export * from "./MainView"
 export * from "./Work"
 export * from "./Footer"

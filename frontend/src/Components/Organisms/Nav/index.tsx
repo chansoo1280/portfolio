@@ -19,6 +19,7 @@ export const Nav = (props: INav.IProps): JSX.Element => {
     const classes = classNames({
         [styles["nav"]]: true,
         [styles["nav--active"]]: selIdx !== null,
+        [styles["nav--hide"]]: router.pathname !== "/works" && router.pathname !== "/resume" && router.pathname !== "/contact" && router.pathname !== "/",
     })
     const touchObj: {
         startTime: number | null

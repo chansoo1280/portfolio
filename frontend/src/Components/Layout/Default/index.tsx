@@ -7,10 +7,15 @@ import className from "classnames"
 // import { StyledWrap } from "./styled"
 import styles from "./Default.module.scss"
 import { ILayout } from "../Layout"
+import { useRouter } from "next/router"
 // #endregion Local Imports
 
 export const Default = ({ children }: ILayout.IProps): JSX.Element => {
-    const classes = className("l_wrap", styles["l_wrap--default"])
+    const router = useRouter()
+
+    const classes = className("l_wrap", {
+        [styles["l_wrap--default"]]: !(router.pathname !== "/works" && router.pathname !== "/resume" && router.pathname !== "/contact" && router.pathname !== "/"),
+    })
     return (
         <>
             <Head>
