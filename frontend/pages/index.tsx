@@ -1,18 +1,18 @@
 // #region Global Imports
+import { useEffect } from "react"
 // #endregion Global Imports
 
 // #region Local Imports
 import { ReduxNextPageContext } from "@Interfaces"
 import { MainView } from "@Components"
-import { useEffect } from "react"
-import { AppActions } from "@Actions"
-import { useAppDispatch } from "@Redux"
+import { useDispatch } from "react-redux"
+import { AppActions } from "@Reducers"
 // #endregion Local Imports
 
 const Page = (): JSX.Element => {
-    const dispatch = useAppDispatch()
+    const dispatch = useDispatch()
     useEffect(() => {
-        dispatch(AppActions.SetSelNav(null))
+        dispatch(AppActions.setNav(null))
     })
     return (
         <>

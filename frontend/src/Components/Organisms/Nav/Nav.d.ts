@@ -3,7 +3,7 @@ import { Ref } from "react"
 declare namespace INav {
     export interface IProps {
         children?: React.ReactNode
-        selIdx: null
+        selIdx: number | null
         refContainer?: Ref
     }
 }

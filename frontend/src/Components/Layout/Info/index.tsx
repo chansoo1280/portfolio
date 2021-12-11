@@ -12,15 +12,9 @@ import { forwardRef, RefObject, useRef } from "react"
 // #endregion Local Imports
 
 const Info = forwardRef<HTMLDivElement, ILayout.IProps>(({ children }, ref) => {
-    const classes = className("l_wrap", styles["l_wrap--info"])
+    const classes = className(styles["l_wrap"])
     return (
         <>
-            <Head>
-                <title>Chansoo's Portfolio</title>
-                <meta name="description" content="Chansoo's Portfolio" />
-                <link rel="icon" href="/favicon.ico" />
-                <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css"></link>
-            </Head>
             <div ref={ref} className={classes}>
                 {children}
                 <Footer />

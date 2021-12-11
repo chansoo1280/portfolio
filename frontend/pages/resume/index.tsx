@@ -5,15 +5,15 @@
 import { ReduxNextPageContext } from "@Interfaces"
 import { LayoutCode } from "@Components"
 import { useEffect } from "react"
-import { AppActions } from "@Actions"
 import { NavIdx, Title, Profile, Skills, ContentsWrapper } from "@Components"
-import { useAppDispatch } from "@Redux"
+import { useDispatch } from "react-redux"
+import { AppActions } from "@Reducers"
 // #endregion Local Imports
 
 const Page = (): JSX.Element => {
-    const dispatch = useAppDispatch()
+    const dispatch = useDispatch()
     useEffect(() => {
-        dispatch(AppActions.SetSelNav(NavIdx.RESUME))
+        dispatch(AppActions.setNav(NavIdx.RESUME))
     })
     return (
         <>
@@ -25,10 +25,10 @@ const Page = (): JSX.Element => {
                     ChanSoo kim
                 </Title>
                 <Profile />
-                <Title as="h2" border>
+                {/* <Title as="h2" border>
                     Skills
                 </Title>
-                <Skills />
+                <Skills /> */}
                 <Title as="h2" border>
                     Work Experience
                 </Title>
