@@ -26,7 +26,7 @@ const Page = (): JSX.Element => {
         </ContentsWrapper>
     )
 }
-Page.getStaticProps = async () => ({
+export const getStaticProps = async (): Promise<any> => ({
     props: {
         layout: LayoutCode.Info,
         transition: "info",
