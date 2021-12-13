@@ -3,18 +3,17 @@
 
 // #region Local Imports
 import { ReduxNextPageContext } from "@Interfaces"
-import { Nav, MainView, LayoutCode } from "@Components"
-import { useDispatch } from "react-redux"
+import { LayoutCode } from "@Components"
 import { useEffect } from "react"
-import { AppActions } from "@Actions"
 import { NavIdx, ContentsWrapper, Title, Contact } from "@Components"
-import { useAppDispatch } from "@Redux"
+import { useDispatch } from "react-redux"
+import { AppActions } from "@Reducers"
 // #endregion Local Imports
 
 const Page = (): JSX.Element => {
-    const dispatch = useAppDispatch()
+    const dispatch = useDispatch()
     useEffect(() => {
-        dispatch(AppActions.SetSelNav(NavIdx.CONTACT))
+        dispatch(AppActions.setNav(NavIdx.CONTACT))
     })
     return (
         <ContentsWrapper>

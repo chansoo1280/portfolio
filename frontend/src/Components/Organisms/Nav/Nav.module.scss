@@ -5,7 +5,7 @@ $nav-prefix: "nav";
     top: 100%;
     left: 0;
     transition: transform 0.4s ease-out, top 0.4s ease-out;
-    transform: translate(0, calc(-100% - 30px));
+    transform: translate(0, calc(-100%));
     display: flex;
     align-items: center;
     width: 100%;

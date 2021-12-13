@@ -1,15 +1,17 @@
 // #region Global Imports
-import { combineReducers } from "redux"
+import { combineReducers } from "@reduxjs/toolkit"
 // #endregion Global Imports
 
 // #region Local Imports
-import { AppReducer } from "./app"
+import appReducer from "./app"
 // #endregion Local Imports
 
 export * from "./app"
 
-export const Reducers = combineReducers({
-    app: AppReducer,
+const rootReducer = combineReducers({
+    appReducer,
 })
-// const persistedReducer = persistReducer(persistConfig, rootReducer)
-// export default persistedReducer
+
+export default rootReducer
+
+export type RootState = ReturnType<typeof rootReducer>
