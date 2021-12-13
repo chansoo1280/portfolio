@@ -2,7 +2,6 @@
 // #endregion Global Imports
 
 // #region Local Imports
-import { ReduxNextPageContext } from "@Interfaces"
 import { Privacy } from "@Components"
 // #endregion Local Imports
 
@@ -231,11 +230,7 @@ const Page = (): JSX.Element => {
         </>
     )
 }
-Page.getInitialProps = async (ctx: ReduxNextPageContext) => {
-    // return {
-    //     layout: LayoutCode.Info,
-    //     transition: "slide",
-    // }
-    return {}
-}
+Page.getStaticProps = async () => ({
+    props: {},
+})
 export default Page

@@ -2,7 +2,6 @@
 // #endregion Global Imports
 
 // #region Local Imports
-import { ReduxNextPageContext } from "@Interfaces"
 import { LayoutCode } from "@Components"
 import { useEffect } from "react"
 import { NavIdx, Title, ContentsWrapper, Work } from "@Components"
@@ -31,10 +30,10 @@ const Page = (): JSX.Element => {
         </ContentsWrapper>
     )
 }
-Page.getInitialProps = async (ctx: ReduxNextPageContext) => {
-    return {
+Page.getStaticProps = async () => ({
+    props: {
         layout: LayoutCode.Info,
         transition: "info",
-    }
-}
+    },
+})
 export default Page
