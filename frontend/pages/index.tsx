@@ -3,7 +3,6 @@ import { useEffect } from "react"
 // #endregion Global Imports
 
 // #region Local Imports
-import { ReduxNextPageContext } from "@Interfaces"
 import { MainView } from "@Components"
 import { useDispatch } from "react-redux"
 import { AppActions } from "@Reducers"
@@ -20,11 +19,7 @@ const Page = (): JSX.Element => {
         </>
     )
 }
-Page.getInitialProps = async (ctx: ReduxNextPageContext) => {
-    // return {
-    //     layout: LayoutCode.Info,
-    //     transition: "slide",
-    // }
-    return {}
-}
+Page.getStaticProps = async () => ({
+    props: {},
+})
 export default Page
