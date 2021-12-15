@@ -54,7 +54,7 @@ $nav-prefix: "nav";
         align-items: center;
         &--center {
             font-weight: 700;
-            background: linear-gradient(135.19deg, #918AB3 0%, #6D89B3 60.46%, #918AB3 113.54%);
+            background: linear-gradient(135.19deg, #918AB3 0%, #6D89B3 60.46%, #918AB3 113.54%); // sass-lint:disable-line no-vendor-prefixes
             background-clip: text;
             -webkit-text-fill-color: transparent;
             background-size: 400% 400%;
