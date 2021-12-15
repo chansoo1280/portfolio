@@ -13,7 +13,7 @@ const Page = (): JSX.Element => {
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(AppActions.setNav(NavIdx.WORKS))
-    })
+    }, [])
     return (
         <ContentsWrapper>
             <Title as="h1" ir>

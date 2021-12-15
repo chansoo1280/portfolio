@@ -40,7 +40,6 @@ class WebAppDocument extends Document {
         return (
             <Html>
                 <Head>
-                    <title>Chansoo's Portfolio</title>
                     <meta name="description" content="Chansoo's Portfolio" />
                     <link rel="icon" href="/favicon.ico" />
                     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css"></link>

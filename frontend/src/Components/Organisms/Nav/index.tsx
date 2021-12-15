@@ -16,8 +16,7 @@ export const Nav = (props: INav.IProps): JSX.Element => {
     const router = useRouter()
     const { selIdx, refContainer } = props
 
-    const classes = classNames({
-        [styles["nav"]]: true,
+    const classes = classNames(styles["nav"], {
         [styles["nav--active"]]: selIdx !== null,
         [styles["nav--hide"]]: router.pathname !== "/works" && router.pathname !== "/resume" && router.pathname !== "/contact" && router.pathname !== "/",
     })
@@ -108,32 +107,35 @@ export const Nav = (props: INav.IProps): JSX.Element => {
             <nav className={classes}>
                 <Link href={selIdx === 1 ? "/" : "/works"}>
                     <a
-                        className={classNames({
-                            [styles["nav__link"]]: true,
+                        className={classNames(styles["nav__link"], {
                             [styles["nav__link--active"]]: selIdx === 1,
                         })}
                     >
-                        WORKS
+                        <span className={classNames(styles["nav__text"])}>WORKS</span>
                     </a>
                 </Link>
                 <Link href={selIdx === 2 ? "/" : "/resume"}>
                     <a
-                        className={classNames({
-                            [styles["nav__link"]]: true,
+                        className={classNames(styles["nav__link"], {
                             [styles["nav__link--active"]]: selIdx === 2,
                         })}
                     >
-                        RESUME
+                        <span
+                            className={classNames(styles["nav__text"], {
+                                [styles["nav__text--center"]]: selIdx === null,
+                            })}
+                        >
+                            RESUME
+                        </span>
                     </a>
                 </Link>
                 <Link href={selIdx === 3 ? "/" : "/contact"}>
                     <a
-                        className={classNames({
-                            [styles["nav__link"]]: true,
+                        className={classNames(styles["nav__link"], {
                             [styles["nav__link--active"]]: selIdx === 3,
                         })}
                     >
-                        CONTACT
+                        <span className={classNames(styles["nav__text"])}>CONTACT</span>
                     </a>
                 </Link>
             </nav>

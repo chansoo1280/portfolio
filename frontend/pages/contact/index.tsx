@@ -4,26 +4,28 @@
 // #region Local Imports
 import { LayoutCode } from "@Components"
 import { useEffect } from "react"
-import { NavIdx, ContentsWrapper, Title, Contact } from "@Components"
+import { NavIdx, Space, Title, Contact } from "@Components"
 import { useDispatch } from "react-redux"
 import { AppActions } from "@Reducers"
+
+import styles from "./contact.module.scss"
 // #endregion Local Imports
 
 const Page = (): JSX.Element => {
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(AppActions.setNav(NavIdx.CONTACT))
-    })
+    }, [])
     return (
-        <ContentsWrapper>
+        <Space padding="20px 36px" direction="column" gap="20px">
             <Title as="h1" ir>
                 contact
             </Title>
-            <Contact />
-            <Title as="span" center>
+            <Title as="span" center className={styles["contact__banner"]}>
                 Thank you for visiting!
             </Title>
-        </ContentsWrapper>
+            <Contact />
+        </Space>
     )
 }
 export const getStaticProps = async (): Promise<any> => ({

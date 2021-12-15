@@ -20,6 +20,7 @@ import { RootState, wrapper } from "@Redux"
 import TheLayout, { LayoutCode } from "@Components/Layout"
 import "@Services/API/DateFormat"
 import { Nav } from "@Components"
+import Head from "next/head"
 // #endregion Local Imports
 
 const formatPathname = (url: string) =>
@@ -53,31 +54,36 @@ const WebApp: NextComponentType<AppContext, AppInitialProps, AppProps> = ({ Comp
         }
     }, [])
     return (
-        <ThemeProvider theme={theme}>
-            <ReactReduxContext.Consumer>
-                {({ store }: any) => (
-                    <PersistGate persistor={store.__persistor} loading={<div>Loading</div>}>
-                        <Nav refContainer={layoutRef} selIdx={app.sel_nav || null} />
-                        <TransitionGroup className="l_transition-wrap">
-                            <CSSTransition
-                                key={router.pathname}
-                                timeout={{
-                                    enter: 400,
-                                    exit: 400,
-                                }}
-                                classNames={pageProps?.transition || ""}
-                            >
-                                <div className={"l_transition " + nextPathname + "-from-" + prevPathname}>
-                                    <AppLayout {...pageProps} ref={layoutRef}>
-                                        <Component {...pageProps} layoutRef={layoutRef} />
-                                    </AppLayout>
-                                </div>
-                            </CSSTransition>
-                        </TransitionGroup>
-                    </PersistGate>
-                )}
-            </ReactReduxContext.Consumer>
-        </ThemeProvider>
+        <>
+            <Head>
+                <title>Chansoo's Portfolio</title>
+            </Head>
+            <ThemeProvider theme={theme}>
+                <ReactReduxContext.Consumer>
+                    {({ store }: any) => (
+                        <PersistGate persistor={store.__persistor} loading={<div>Loading</div>}>
+                            <Nav refContainer={layoutRef} selIdx={app.sel_nav || null} />
+                            <TransitionGroup className="l_transition-wrap">
+                                <CSSTransition
+                                    key={router.pathname}
+                                    timeout={{
+                                        enter: 400,
+                                        exit: 400,
+                                    }}
+                                    classNames={pageProps?.transition || ""}
+                                >
+                                    <div className={"l_transition " + nextPathname + "-from-" + prevPathname}>
+                                        <AppLayout {...pageProps} ref={layoutRef}>
+                                            <Component {...pageProps} layoutRef={layoutRef} />
+                                        </AppLayout>
+                                    </div>
+                                </CSSTransition>
+                            </TransitionGroup>
+                        </PersistGate>
+                    )}
+                </ReactReduxContext.Consumer>
+            </ThemeProvider>
+        </>
     )
 }
 WebApp.getInitialProps = async ({ Component, ctx }: AppContext): Promise<AppInitialProps> => {

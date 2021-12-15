@@ -1,0 +1,42 @@
+.contact{
+    &__banner{
+        position:relative;
+        padding:60px 0;
+        width:100%;
+        &::before{
+            content:"";
+            position:absolute;
+            bottom:0;
+            left:0;
+            display:block;
+            width:100%;
+            height:4px;
+            background: linear-gradient(135.19deg, #918AB3 0%, #6D89B3 60.46%, #918AB3 113.54%);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+        &::after{
+            content:"";
+            position:absolute;
+            top:0;
+            left:0;
+            display:block;
+            width:100%;
+            height:4px;
+            background: linear-gradient(135.19deg, #918AB3 0%, #6D89B3 60.46%, #918AB3 113.54%);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+    }
+}
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
