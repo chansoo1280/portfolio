@@ -14,7 +14,7 @@ export const MainView = (props: Props): JSX.Element => {
         <>
             <div className={styles["main-view"]} {...props}>
                 <div className={styles["main-view__img-wrap"]}>
-                    <img className={styles["main-view__img"]} src="/static/images/profile.jpg" alt="" />
+                    <img className={styles["main-view__img"]} src="/static/images/icon_black.svg" alt="" />
                 </div>
                 <Title className={styles["main-view__title"]} as="h1">
                     김찬수

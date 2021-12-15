@@ -1,7 +1,9 @@
 .contact{
     &__banner{
         position:relative;
+        margin:0 auto;
         padding:60px 0;
+        max-width:1060px;
         width:100%;
         &::before{
             content:"";
