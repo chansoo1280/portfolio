@@ -1,15 +1,21 @@
+@import "../../mixin";
+
 $nav-prefix: "nav";
 .#{$nav-prefix} {
     z-index: 99;
     transition: all 0.3s ease-out;
     position: fixed;
     top: 100%;
-    left: 0;
-    transform: translate(0, -100%);
+    left: 50%;
+    transform: translate(-50%, -100%);
     padding: 4px 0;
     display: flex;
     align-items: flex-start;
     width: 100%;
+    max-width:1060px;
+    @include desktop {
+        max-width:400px;
+    }
     height: 70px;
     background: #272A2F;
     &--active {
@@ -32,6 +38,9 @@ $nav-prefix: "nav";
         background: #272A2F;
         &--active {
             flex: 2;
+            @include desktop {
+                flex: 1;
+            }
             .#{$nav-prefix}__text::before{
                 width:100%;
             }
@@ -46,7 +55,7 @@ $nav-prefix: "nav";
         &--center {
             font-weight: 700;
             background: linear-gradient(135.19deg, #918AB3 0%, #6D89B3 60.46%, #918AB3 113.54%);
-            -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
             background-size: 400% 400%;
             animation: gradient 15s ease infinite;
