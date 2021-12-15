@@ -7,12 +7,12 @@
   </a>
 
   <p align="center">
-    김찬수 개발자 포트폴이로
+    chansoo kim FE-DEV PORTFOLIO
     <br />
     <a href="https://github.com/chansoo1280/portfolio"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/chansoo1280/portfolio">View Demo</a>
+    <a href="https://chansoo1280.site/">Site</a>
     ·
     <a href="https://github.com/chansoo1280/portfolio/issues">Report Bug</a>
     ·
@@ -128,10 +128,7 @@
 
 ## Roadmap
 
-- [ ] Add Theme
-  - [ ] default
-  - [ ] dark
-  - [ ] color
+- [ ] Add Works
   
 <p align="right">(<a href="#top">back to top</a>)</p>
 
