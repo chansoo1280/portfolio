@@ -3,7 +3,7 @@
 <h1 align="center">Chansoo's portfolio</h1>
 <div align="center">
   <a href="https://github.com/chansoo1280/portfolio">
-    <img src="https://user-images.githubusercontent.com/62010067/146263694-9d0d7c28-c3f1-4a5c-ae7b-e66f921ab356.png" alt="Chansoo's portfolio">
+    <img src="https://user-images.githubusercontent.com/62010067/146263694-9d0d7c28-c3f1-4a5c-ae7b-e66f921ab356.png" alt="Chansoo's portfolio" width="150">
   </a>
 
   <p align="center">
