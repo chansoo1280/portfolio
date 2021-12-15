@@ -12,7 +12,7 @@ const Page = (): JSX.Element => {
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(AppActions.setNav(null))
-    })
+    }, [])
     return (
         <>
             <MainView />

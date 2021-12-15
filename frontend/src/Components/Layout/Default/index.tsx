@@ -7,13 +7,16 @@ import className from "classnames"
 // import { StyledWrap } from "./styled"
 import styles from "./Default.module.scss"
 import { ILayout } from "../Layout"
+import { forwardRef } from "react"
 // #endregion Local Imports
 
-export const Default = ({ children }: ILayout.IProps): JSX.Element => {
+export const Default = forwardRef<HTMLDivElement, ILayout.IProps>(({ children }: ILayout.IProps, ref): JSX.Element => {
     const classes = className(styles["l_wrap"])
     return (
         <>
-            <div className={classes}>{children}</div>
+            <div className={classes} ref={ref}>
+                {children}
+            </div>
         </>
     )
-}
+})

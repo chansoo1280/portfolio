@@ -1,4 +1,15 @@
 .space {
+    margin-bottom: 20px;
     display: flex;
-    gap: 8px;
+    align-items: center;
+    gap: 10px;
+    &:last-child{
+        margin-bottom:0;
+    }
+    &--cover {
+        width: 100%;
+    }
+    &--flex {
+        flex: 1;
+    }
 }

@@ -1,18 +1,102 @@
-.btn {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    width: fit-content;
-    height: 36px;
-    border: 1px solid;
-    border-radius: 2px;
-    &--flex {
-        flex: 1;
-    }
-    &--lg {
-        height: 48px;
-    }
-    &--sm {
-        height: 24px;
-    }
+$btn-prefix: "btn";
+.#{$btn-prefix} {
+    padding: 0 10px;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        min-width: 180px;
+        min-height: 36px;
+        border: 1px solid #272A2F;
+        border-radius: 4px;
+        background: #F3F3F3;
+        color: #272A2F;
+        box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.14), 0px 1px 10px rgba(0, 0, 0, 0.12), 0px 2px 4px rgba(0, 0, 0, 0.2);
+
+        &:focus {
+            outline: none;
+        }
+        // &--danger {
+        //     border-color: $error-color;
+        //     color: $error-color;
+        // }
+        // &[disabled] {
+        //     border-color: $normal-color;
+        //     color: $normal-color;
+        // }
+        &--hide {
+            display: none;
+        }
+        &--icon-only {
+            padding: 0;
+            min-width: auto;
+            width: 36px;
+            height: 36px;
+            border: none;
+            background: transparent;
+            font-size: 24px;
+            &.#{$btn-prefix}--lg {
+                min-width: 48px;
+            }
+            &.#{$btn-prefix}--default {
+                background: #fff;
+                border: 1px solid #d0d9e4;
+                box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+            }
+        }
+        
+        &--flex {
+            min-width: unset;
+            flex: 1;
+        }
+        &--block {
+            margin: 0 auto 10px;
+            display: block;
+            width: 100%;
+            max-width: 420px;
+        }
+        &--fixed {
+            position: fixed;
+            bottom: 40px;
+            right: 20px;
+        }
+        &--primary {
+            background: #272A2F;
+            border-color: #272A2F;
+            color: #F3F3F3;
+            // &.#{$btn-prefix}--danger {
+            //     background: $error-color;
+            //     border-color: $error-color;
+            //     color: #F3F3F3;
+            // }
+            // &[disabled] {
+            //     background: $normal-color;
+            //     border-color: $normal-color;
+            //     color: #F3F3F3;
+            // }
+        }
+        &--text {
+            background: transparent;
+            border: none;
+            min-width: unset;
+            padding: 0;
+            box-shadow: none;
+        }
+        &--link {
+            background: transparent;
+            text-decoration: underline;
+            border: none;
+            min-width: unset;
+            padding: 0;
+            box-shadow: none;
+        }
+        &--round{
+            border-radius: 4px;
+        }
+        &--circle {
+            border-radius: 50%;
+        }
+        &--lg {
+            min-height: 48px;
+            font-size: 30px;
+        }
 }

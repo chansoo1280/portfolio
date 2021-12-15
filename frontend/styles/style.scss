@@ -14,19 +14,18 @@ body {
     height: 100%;
 }
 .l_transition-wrap{
-    overflow: hidden;
     position: relative;
     width: 100%;
-    height: 100%;
+    height:100%;
     perspective: 500px;
 }
 .l_transition {
-    background: #fff;
     width: 100%;
     height: 100%;
     position: absolute;
     top: 0;
     left: 0;
+    background: #272A2F;
 }
 .l_main {
     padding: 20px 0;
