@@ -1,5 +1,5 @@
 module.exports = {
-  reactStrictMode: true,
-  trailingSlash: true,
-  distDir: 'build',
-}
+	reactStrictMode: true,
+	trailingSlash: true,
+	distDir: 'build'
+};
