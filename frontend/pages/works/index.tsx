@@ -4,7 +4,7 @@
 // #region Local Imports
 import { LayoutCode } from "@Components"
 import { useEffect } from "react"
-import { NavIdx, Title, ContentsWrapper, Work } from "@Components"
+import { NavIdx, Title, Space, Work } from "@Components"
 import { useDispatch } from "react-redux"
 import { AppActions } from "@Reducers"
 // #endregion Local Imports
@@ -15,7 +15,7 @@ const Page = (): JSX.Element => {
         dispatch(AppActions.setNav(NavIdx.WORKS))
     }, [])
     return (
-        <ContentsWrapper>
+        <Space direction="column">
             <Title as="h1" ir>
                 works
             </Title>
@@ -27,7 +27,7 @@ const Page = (): JSX.Element => {
                 2020
             </Title>
             <Work title="준비중입니다..."></Work>
-        </ContentsWrapper>
+        </Space>
     )
 }
 export const getStaticProps = async (): Promise<any> => ({

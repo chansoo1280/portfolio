@@ -17,7 +17,7 @@ export type ButtonHTMLType = typeof ButtonHTMLTypes[number]
 
 interface BaseButtonProps {
     children?: ReactNode
-    icon?: React.ReactNode
+    icon?: ReactNode
 
     type?: ButtonType
     shape?: ButtonShape

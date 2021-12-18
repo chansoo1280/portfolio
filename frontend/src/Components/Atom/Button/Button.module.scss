@@ -50,7 +50,7 @@ $btn-prefix: "btn";
         }
         &--block {
             margin: 0 auto 10px;
-            display: block;
+            display: flex;
             width: 100%;
             max-width: 420px;
         }

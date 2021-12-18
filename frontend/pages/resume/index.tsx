@@ -2,9 +2,9 @@
 // #endregion Global Imports
 
 // #region Local Imports
-import { LayoutCode, Space, TimeLine } from "@Components"
+import { LayoutCode, WorkList, SkillList } from "@Components"
 import { useEffect } from "react"
-import { NavIdx, Title, Profile, Skills, ContentsWrapper } from "@Components"
+import { NavIdx, Title, Profile } from "@Components"
 import { useDispatch } from "react-redux"
 import { AppActions } from "@Reducers"
 // #endregion Local Imports
@@ -23,10 +23,43 @@ const Page = (): JSX.Element => {
                 profile
             </Title>
             <Profile />
-            <Title as="h2" center>
-                Time-Line
+            <Title as="h2" center type="primary">
+                Works
             </Title>
-            <TimeLine />
+            <WorkList>
+                <WorkList.Item
+                    TitleProps={{
+                        children: "KIYO - 통합계정관리",
+                        type: "primary",
+                    }}
+                    date="2021-11~2021-12"
+                    ImgProps={{
+                        src: "/static/images/WorkList/work01.svg",
+                        alt: "안전하게 통합계정관리 / 간편한 화면구성",
+                    }}
+                />
+                <WorkList.Item
+                    TitleProps={{
+                        children: "알고싶은 서울물가",
+                        type: "primary",
+                    }}
+                    date="2021-08~2021-12"
+                    ImgProps={{
+                        src: "/static/images/WorkList/work02.svg",
+                        alt: "알고싶은 서울물가",
+                    }}
+                />
+            </WorkList>
+            <Title as="h2" center>
+                Skill
+            </Title>
+            <SkillList>
+                <SkillList.Item>Front-End : Next.js(TypeScript), React.js, HTML, CSS, JavaScript</SkillList.Item>
+                <SkillList.Item isSub>Back-End : Node.js, Nest.js</SkillList.Item>
+                <SkillList.Item isSub>Database : SQL server</SkillList.Item>
+                <SkillList.Item isSub>DevOps : AWS(EC2, RDS 등), Docker, Jenkins, Git</SkillList.Item>
+                <SkillList.Item isSub>APP : React Native</SkillList.Item>
+            </SkillList>
         </>
     )
 }
