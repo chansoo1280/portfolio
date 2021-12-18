@@ -13,17 +13,19 @@ const Profile: React.FunctionComponent<Props> = (props) => {
     const {} = props
     return (
         <div className={styles["profile"]}>
-            <Space vAlign="flex-start" gap="20px">
+            <div className={styles["profile__img-wrap"]}>
                 <img className={styles["profile__img"]} src="/static/images/profile.jpg" alt="me" />
-                <div className={styles["profile__con"]}>
-                    <span className={styles["profile__role"]}>
-                        1년 9개월차
-                        <br /> 프론트엔드 개발자, 김찬수입니다.
-                    </span>
-                    <p className={styles["profile__desc"]}>더 나은 가치와 서비스 제공을 목표로 여러 앱과 블로그 등을 개발 및 운영중입니다.</p>
-                </div>
-            </Space>
-            <Button block>이력서 다운로드</Button>
+            </div>
+            <div className={styles["profile__con"]}>
+                <Space margin="0 0 6px" vAlign="flex-end" gap="7px">
+                    <span className={styles["profile__name"]}>김찬수</span>
+                    <span className={styles["profile__name-en"]}>ChanSoo Kim</span>
+                </Space>
+                <span className={styles["profile__role"]}>1년 9개월차 프론트엔드 개발자</span>
+                <Button href="/file/resume.pdf" download block type="primary">
+                    이력서 다운로드
+                </Button>
+            </div>
         </div>
     )
 }
