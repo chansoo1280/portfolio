@@ -22,11 +22,7 @@ const Page = (): JSX.Element => {
             <Title as="h2" center>
                 2021
             </Title>
-            <Work title="준비중입니다..."></Work>
-            <Title as="h2" center>
-                2020
-            </Title>
-            <Work title="준비중입니다..."></Work>
+            <Work title="KIYO - 통합계정관리(2021-12)" background="url(/static/images/Works/works01.svg)no-repeat center /cover"></Work>
         </Space>
     )
 }

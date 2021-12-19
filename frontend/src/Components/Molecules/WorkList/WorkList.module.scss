@@ -1,19 +1,29 @@
+@import "@Components/mixin";
+
 $work-list-prefix: "work-list";
 .#{$work-list-prefix} {
     margin-bottom:11px; 
     width: 100%;
     background: linear-gradient(to bottom, #F3F3F3 calc(100% - 80px), #272A2F 80px);
     &__item {
+        margin:0 auto;
         padding: 20px 16px 47px;
         width: 100%;
+        max-width:800px;
     }
     &__title{
         font-size: 24px;
         font-weight:500;
+        @include desktop {
+            font-size: 36px;
+        }
     }
     &__date {
         font-size:12px;
         color: rgba(0, 0, 0, 0.8);
+        @include desktop {
+            font-size: 24px;
+        }
     }
     &__img{
         display:inline-block;

@@ -1,4 +1,4 @@
-@import "../../mixin";
+@import "@Components/mixin";
 
 $nav-prefix: "nav";
 .#{$nav-prefix} {
@@ -9,13 +9,7 @@ $nav-prefix: "nav";
     left: 50%;
     transform: translate(-50%, -100%);
     padding: 4px 0;
-    display: flex;
-    align-items: flex-start;
     width: 100%;
-    max-width:1060px;
-    @include desktop {
-        max-width:400px;
-    }
     height: 70px;
     background: #272A2F;
     &--active {
@@ -23,6 +17,15 @@ $nav-prefix: "nav";
     }
     &--hide {
         display: none;
+    }
+    &__con{
+        margin:0 auto;
+        display: flex;
+        align-items: flex-start;
+        max-width:1060px;
+        @include desktop {
+            max-width:400px;
+        }
     }
     &__link {
         transition: all 0.4s;
