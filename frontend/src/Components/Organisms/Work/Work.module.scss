@@ -1,14 +1,21 @@
+@import "@Components/mixin";
+
 .work {
     margin:0 auto;
-    max-width:1060px;
-    width:100%;
+    width:calc(100% - 32px);
+    max-width:800px;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 160px;
-    border: 1px solid;
+    border-radius:4px;
     color: #F3F3F3;
     &__title {
-        font-size: 20px;
+        font-size: 16px;
+        font-weight:700;
+        @include desktop {
+            font-size: 24px;
+            font-weight:500;
+        }
     }
 }

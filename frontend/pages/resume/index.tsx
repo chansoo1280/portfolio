@@ -30,6 +30,7 @@ const Page = (): JSX.Element => {
                 <WorkList.Item
                     TitleProps={{
                         children: "KIYO - 통합계정관리",
+                        as: "h3",
                         type: "primary",
                     }}
                     date="2021-11~2021-12"
@@ -41,6 +42,7 @@ const Page = (): JSX.Element => {
                 <WorkList.Item
                     TitleProps={{
                         children: "알고싶은 서울물가",
+                        as: "h3",
                         type: "primary",
                     }}
                     date="2021-08~2021-12"

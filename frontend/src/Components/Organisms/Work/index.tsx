@@ -9,14 +9,20 @@ import styles from "./Work.module.scss"
 interface Props {
     children?: ReactNode
     title: string
+    background?: string
 }
 const Work: React.FunctionComponent<Props> = (props) => {
-    const { title } = props
+    const { title, background } = props
     const classes = classNames({
         [styles["work"]]: true,
     })
     return (
-        <div className={classes}>
+        <div
+            className={classes}
+            style={{
+                background,
+            }}
+        >
             <strong className={styles["work__title"]}>{title}</strong>
         </div>
     )

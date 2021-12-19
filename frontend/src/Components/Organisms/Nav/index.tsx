@@ -94,50 +94,62 @@ export const Nav = (props: INav.IProps): JSX.Element => {
         touchObj.x = null
         touchObj.y = null
     }
+    const handleWheel = (e: WheelEvent) => {
+        if (router.pathname === "/") {
+            if (e.deltaY >= 0) {
+                console.log(e)
+                router.push("/resume")
+            }
+        }
+    }
     useEffect(() => {
         document.addEventListener("touchstart", handleTouchStart)
         document.addEventListener("touchend", handleTouchEnd)
+        document.addEventListener("wheel", handleWheel)
         return () => {
             document.removeEventListener("touchstart", handleTouchStart)
             document.removeEventListener("touchend", handleTouchEnd)
+            document.removeEventListener("wheel", handleWheel)
         }
     }, [router.pathname])
     return (
         <>
             <nav className={classes}>
-                <Link href={selIdx === 1 ? "/" : "/works"}>
-                    <a
-                        className={classNames(styles["nav__link"], {
-                            [styles["nav__link--active"]]: selIdx === 1,
-                        })}
-                    >
-                        <span className={classNames(styles["nav__text"])}>WORKS</span>
-                    </a>
-                </Link>
-                <Link href={selIdx === 2 ? "/" : "/resume"}>
-                    <a
-                        className={classNames(styles["nav__link"], {
-                            [styles["nav__link--active"]]: selIdx === 2,
-                        })}
-                    >
-                        <span
-                            className={classNames(styles["nav__text"], {
-                                [styles["nav__text--center"]]: selIdx === null,
+                <div className={classNames(styles["nav__con"])}>
+                    <Link href={selIdx === 1 ? "/" : "/works"}>
+                        <a
+                            className={classNames(styles["nav__link"], {
+                                [styles["nav__link--active"]]: selIdx === 1,
                             })}
                         >
-                            RESUME
-                        </span>
-                    </a>
-                </Link>
-                <Link href={selIdx === 3 ? "/" : "/contact"}>
-                    <a
-                        className={classNames(styles["nav__link"], {
-                            [styles["nav__link--active"]]: selIdx === 3,
-                        })}
-                    >
-                        <span className={classNames(styles["nav__text"])}>CONTACT</span>
-                    </a>
-                </Link>
+                            <span className={classNames(styles["nav__text"])}>WORKS</span>
+                        </a>
+                    </Link>
+                    <Link href={selIdx === 2 ? "/" : "/resume"}>
+                        <a
+                            className={classNames(styles["nav__link"], {
+                                [styles["nav__link--active"]]: selIdx === 2,
+                            })}
+                        >
+                            <span
+                                className={classNames(styles["nav__text"], {
+                                    [styles["nav__text--center"]]: selIdx === null,
+                                })}
+                            >
+                                RESUME
+                            </span>
+                        </a>
+                    </Link>
+                    <Link href={selIdx === 3 ? "/" : "/contact"}>
+                        <a
+                            className={classNames(styles["nav__link"], {
+                                [styles["nav__link--active"]]: selIdx === 3,
+                            })}
+                        >
+                            <span className={classNames(styles["nav__text"])}>CONTACT</span>
+                        </a>
+                    </Link>
+                </div>
             </nav>
         </>
     )
