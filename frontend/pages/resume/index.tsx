@@ -3,17 +3,10 @@
 
 // #region Local Imports
 import { LayoutCode, WorkList, SkillList } from "@Components"
-import { useEffect } from "react"
-import { NavIdx, Title, Profile } from "@Components"
-import { useDispatch } from "react-redux"
-import { AppActions } from "@Reducers"
+import { Title, Profile } from "@Components"
 // #endregion Local Imports
 
 const Page = (): JSX.Element => {
-    const dispatch = useDispatch()
-    useEffect(() => {
-        dispatch(AppActions.setNav(NavIdx.RESUME))
-    }, [])
     return (
         <>
             <Title as="h1" ir>
