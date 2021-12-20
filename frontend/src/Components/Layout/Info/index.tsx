@@ -1,5 +1,5 @@
 // #region Global Imports
-import Head from "next/head"
+import { forwardRef, RefObject } from "react"
 import className from "classnames"
 // #endregion Global Imports
 
@@ -8,7 +8,6 @@ import className from "classnames"
 import { Footer, TopBtn } from "@Components"
 import styles from "./Info.module.scss"
 import { ILayout } from "../Layout"
-import { forwardRef, RefObject, useRef } from "react"
 // #endregion Local Imports
 
 const Info = forwardRef<HTMLDivElement, ILayout.IProps>(({ children }, ref) => {
@@ -18,8 +17,8 @@ const Info = forwardRef<HTMLDivElement, ILayout.IProps>(({ children }, ref) => {
             <div ref={ref} className={classes}>
                 {children}
                 <Footer />
-                <TopBtn container={ref as RefObject<HTMLDivElement>} />
             </div>
+            <TopBtn container={ref as RefObject<HTMLDivElement>} />
         </>
     )
 })

@@ -1,5 +1,5 @@
 // #region Global Imports
-import Head from "next/head"
+import { forwardRef } from "react"
 import className from "classnames"
 // #endregion Global Imports
 
@@ -7,7 +7,6 @@ import className from "classnames"
 // import { StyledWrap } from "./styled"
 import styles from "./Default.module.scss"
 import { ILayout } from "../Layout"
-import { forwardRef } from "react"
 // #endregion Local Imports
 
 export const Default = forwardRef<HTMLDivElement, ILayout.IProps>(({ children }: ILayout.IProps, ref): JSX.Element => {

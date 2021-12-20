@@ -1,9 +1,9 @@
 .l_wrap {
-    padding:70px 0 0;
+    transform:translate(0,70px);
     overflow-y: auto;
     overflow-x: hidden;
     width: 100%;
-    height: 100%;
+    height:calc(100% - 70px);
     display: flex;
     flex-direction: column;
 }

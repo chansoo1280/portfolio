@@ -67,13 +67,11 @@ export const Nav = (props: INav.IProps): JSX.Element => {
                     }
                 }
             } else {
-                if (refContainer.current) {
-                    if (refContainer.current.scrollTop !== 0) {
-                        touchObj.startTime = null
-                        touchObj.x = null
-                        touchObj.y = null
-                        return
-                    }
+                if (refContainer.current && refContainer.current.scrollTop !== 0) {
+                    touchObj.startTime = null
+                    touchObj.x = null
+                    touchObj.y = null
+                    return
                 }
                 if (50 < yDiff) {
                     console.log("yDiff down")
@@ -111,7 +109,7 @@ export const Nav = (props: INav.IProps): JSX.Element => {
             document.removeEventListener("touchend", handleTouchEnd)
             document.removeEventListener("wheel", handleWheel)
         }
-    }, [router.pathname])
+    }, [router.pathname, refContainer])
     return (
         <>
             <nav className={classes}>
