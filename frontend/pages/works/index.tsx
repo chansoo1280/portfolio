@@ -3,17 +3,10 @@
 
 // #region Local Imports
 import { LayoutCode } from "@Components"
-import { useEffect } from "react"
-import { NavIdx, Title, Space, Work } from "@Components"
-import { useDispatch } from "react-redux"
-import { AppActions } from "@Reducers"
+import { Title, Space, Work } from "@Components"
 // #endregion Local Imports
 
 const Page = (): JSX.Element => {
-    const dispatch = useDispatch()
-    useEffect(() => {
-        dispatch(AppActions.setNav(NavIdx.WORKS))
-    }, [])
     return (
         <Space direction="column">
             <Title as="h1" ir>

@@ -4,17 +4,18 @@ import classNames from "classnames"
 
 // #endregion Global Imports// #region Local Imports
 
-import { INav, NavIdx } from "./Nav.d"
+import { INav } from "./Nav.d"
 import styles from "./Nav.module.scss"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { useRouter } from "next/router"
 
 // #endregion Local Imports
-export { NavIdx }
 
 export const Nav = (props: INav.IProps): JSX.Element => {
     const router = useRouter()
-    const { selIdx, refContainer } = props
+    const { refContainer } = props
+
+    const [selIdx, setSelIdx] = useState<number | null>(null)
 
     const classes = classNames(styles["nav"], {
         [styles["nav--active"]]: selIdx !== null,
@@ -37,7 +38,7 @@ export const Nav = (props: INav.IProps): JSX.Element => {
     }
 
     const handleTouchEnd = (e: TouchEvent) => {
-        if (e.target && (e.target as any).localName === "canvas") return false
+        // if (e.target && (e.target as any).localName === "canvas") return false
         const endTime = e.timeStamp
         const endX = e.changedTouches[0].clientX
         const endY = e.changedTouches[0].clientY
@@ -95,11 +96,28 @@ export const Nav = (props: INav.IProps): JSX.Element => {
     const handleWheel = (e: WheelEvent) => {
         if (router.pathname === "/") {
             if (e.deltaY >= 0) {
-                console.log(e)
                 router.push("/resume")
+            }
+        } else if (router.pathname === "/resume") {
+            if (e.deltaY < 0) {
+                router.push("/")
             }
         }
     }
+    useEffect(() => {
+        if (router.pathname === "/") {
+            setSelIdx(null)
+        } else if (router.pathname === "/works") {
+            setSelIdx(1)
+        } else if (router.pathname === "/resume") {
+            setSelIdx(2)
+        } else if (router.pathname === "/contact") {
+            setSelIdx(3)
+        }
+        return () => {
+            setSelIdx(null)
+        }
+    }, [router.pathname])
     useEffect(() => {
         document.addEventListener("touchstart", handleTouchStart)
         document.addEventListener("touchend", handleTouchEnd)

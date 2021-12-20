@@ -41,10 +41,6 @@ $nav1: "\\/works";
 $nav2: "\\/resume";
 $nav3: "\\/contact";
 
-.info-enter{
-    touch-action:none;
-}
-
 .#{$nav3}-from-#{$main}.info-enter,
 .#{$nav2}-from-#{$main}.info-enter,
 .#{$nav1}-from-#{$main}.info-enter {

@@ -5,7 +5,7 @@ import "/styles/reset.css"
 import "/styles/style.scss"
 
 import { AppInitialProps, AppContext, AppProps } from "next/app"
-import { useRouter, withRouter } from "next/router"
+import { useRouter } from "next/router"
 import { ThemeProvider } from "styled-components"
 import { ReactReduxContext, useSelector } from "react-redux"
 import { PersistGate } from "redux-persist/integration/react"
@@ -62,7 +62,7 @@ const WebApp: NextComponentType<AppContext, AppInitialProps, AppProps> = ({ Comp
                 <ReactReduxContext.Consumer>
                     {({ store }: any) => (
                         <PersistGate persistor={store.__persistor} loading={<div>Loading</div>}>
-                            <Nav refContainer={layoutRef} selIdx={app.sel_nav || null} />
+                            <Nav refContainer={layoutRef} />
                             <TransitionGroup className="l_transition-wrap">
                                 <CSSTransition
                                     key={router.pathname}
